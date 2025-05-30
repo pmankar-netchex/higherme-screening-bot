@@ -1,0 +1,80 @@
+[
+  {
+    "id": "job-001",
+    "title": "Server",
+    "department": "Front of House",
+    "description": "We are looking for an experienced server to join our team. The ideal candidate will have excellent customer service skills and be able to work in a fast-paced environment.",
+    "requirements": [
+      "Previous serving experience preferred",
+      "Excellent communication skills",
+      "Ability to work flexible hours including weekends",
+      "Must be able to stand for extended periods",
+      "Food safety certification preferred"
+    ],
+    "responsibilities": [
+      "Take customer orders accurately",
+      "Serve food and beverages promptly",
+      "Handle cash and credit card transactions",
+      "Maintain clean dining area",
+      "Assist with opening and closing duties"
+    ],
+    "shiftTypes": ["morning", "evening"],
+    "weekendRequired": true,
+    "hourlyRate": "$15-18/hour + tips",
+    "status": "active",
+    "createdAt": "2025-05-28T00:00:00Z",
+    "updatedAt": "2025-05-28T00:00:00Z"
+  },
+  {
+    "id": "job-002",
+    "title": "Line Cook",
+    "department": "Kitchen",
+    "description": "Seeking a skilled line cook to prepare high-quality dishes in our busy kitchen. Must be able to work efficiently under pressure.",
+    "requirements": [
+      "1+ years kitchen experience",
+      "Knowledge of food safety procedures",
+      "Ability to work in hot, fast-paced environment",
+      "Weekend availability required",
+      "Knife skills and cooking techniques"
+    ],
+    "responsibilities": [
+      "Prepare menu items according to recipes",
+      "Maintain food quality and presentation standards",
+      "Keep work station clean and organized",
+      "Follow all food safety guidelines",
+      "Assist with inventory and prep work"
+    ],
+    "shiftTypes": ["morning", "evening"],
+    "weekendRequired": true,
+    "hourlyRate": "$16-20/hour",
+    "status": "active",
+    "createdAt": "2025-05-28T00:00:00Z",
+    "updatedAt": "2025-05-28T00:00:00Z"
+  },
+  {
+    "id": "job-003",
+    "title": "Host/Hostess",
+    "department": "Front of House",
+    "description": "Friendly and professional host needed to greet guests and manage seating. First impression matters!",
+    "requirements": [
+      "Excellent customer service skills",
+      "Professional appearance and demeanor",
+      "Ability to multitask in busy environment",
+      "Weekend availability essential",
+      "Basic computer skills for reservation system"
+    ],
+    "responsibilities": [
+      "Greet and seat guests promptly",
+      "Manage reservation system",
+      "Coordinate with servers on table availability",
+      "Handle phone calls and takeout orders",
+      "Maintain clean entrance and waiting area"
+    ],
+    "shiftTypes": ["evening"],
+    "weekendRequired": true,
+    "hourlyRate": "$14-16/hour",
+    "status": "active",
+    "createdAt": "2025-05-28T00:00:00Z",
+    "updatedAt": "2025-05-28T00:00:00Z"
+  }
+]

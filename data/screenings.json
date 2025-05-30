@@ -1,0 +1,200 @@
+[
+  {
+    "id": "screening_1748592368474",
+    "applicationId": "app-test-001",
+    "candidateId": "candidate-1748591890358",
+    "jobId": "job-001",
+    "status": "completed",
+    "scheduledAt": "2025-05-30T08:06:08.474Z",
+    "createdAt": "2025-05-30T08:06:08.474Z",
+    "updatedAt": "2025-05-30T08:10:00.000Z",
+    "completedAt": "2025-05-30T08:18:09.977Z",
+    "date": "2025-05-30T08:06:08.474Z",
+    "role": "server",
+    "transcript": "Call completed - transcript processing pending",
+    "audioUrl": "https://example.com/audio-recordings/screening-call.mp3",
+    "summary": {
+      "experience": {
+        "evaluation": "Candidate has 3 years of experience in restaurant service.",
+        "highlights": [
+          "Previous experience as server",
+          "Worked in high-volume restaurant"
+        ]
+      },
+      "availability": {
+        "morning": true,
+        "evening": true,
+        "weekends": true,
+        "notes": "Available all days except Sunday mornings."
+      },
+      "transportation": {
+        "hasReliableTransportation": true,
+        "notes": "Has own vehicle."
+      },
+      "softSkills": {
+        "evaluation": "Strong communication skills, friendly demeanor.",
+        "highlights": [
+          "Excellent communication",
+          "Team player"
+        ]
+      },
+      "roleSpecific": {
+        "evaluation": "Good fit for server position based on experience.",
+        "strengths": [
+          "Customer service focus",
+          "Menu knowledge"
+        ],
+        "areas_of_improvement": [
+          "Wine knowledge could be improved"
+        ]
+      }
+    },
+    "duration": 180
+  },
+  {
+    "id": "screening_1748592616917",
+    "applicationId": "app-1748592614871",
+    "candidateId": "candidate-1748592614870",
+    "jobId": "job-003",
+    "status": "screening_completed",
+    "scheduledAt": "2025-05-30T08:10:16.917Z",
+    "createdAt": "2025-05-30T08:10:16.917Z",
+    "updatedAt": "2025-05-30T08:11:11.053Z",
+    "completedAt": "2025-05-30T08:12:00.000Z",
+    "date": "2025-05-30T08:10:16.917Z",
+    "role": "general",
+    "transcript": "Completed screening call with candidate discussing technical background and role fit.",
+    "audioUrl": "/uploads/audio/screening_1748592616917.mp3",
+    "duration": 240,
+    "summary": {
+      "experience": {
+        "evaluation": "Candidate has 2 years of experience in software development with focus on web applications.",
+        "highlights": [
+          "Experience with React and JavaScript",
+          "Worked on e-commerce projects",
+          "Understanding of REST APIs"
+        ]
+      },
+      "availability": {
+        "morning": true,
+        "evening": false,
+        "weekends": true,
+        "notes": "Prefers morning shifts, available weekends but not Sunday evenings."
+      },
+      "transportation": {
+        "hasReliableTransportation": true,
+        "notes": "Has own vehicle and public transport access."
+      },
+      "softSkills": {
+        "evaluation": "Good communication skills, shows enthusiasm for learning.",
+        "highlights": [
+          "Strong problem-solving abilities",
+          "Team collaboration",
+          "Eager to learn new technologies"
+        ]
+      },
+      "roleSpecific": {
+        "evaluation": "Good technical foundation for junior developer role.",
+        "strengths": [
+          "Quick learner",
+          "Solid JavaScript fundamentals",
+          "Experience with modern frameworks"
+        ],
+        "areas_of_improvement": [
+          "Could benefit from more backend experience",
+          "Testing knowledge needs improvement"
+        ]
+      }
+    }
+  },
+  {
+    "id": "screening_1748592616917",
+    "applicationId": "app-1748592614871",
+    "candidateId": "candidate-1748592614870",
+    "jobId": "job-003",
+    "status": "scheduled",
+    "scheduledAt": "2025-05-30T08:10:16.917Z",
+    "createdAt": "2025-05-30T08:10:16.917Z",
+    "updatedAt": "2025-05-30T08:10:16.917Z",
+    "date": "2025-05-30T08:10:16.917Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748593365687",
+    "applicationId": "app-1748593363819",
+    "candidateId": "candidate-1748593363819",
+    "jobId": "job-002",
+    "status": "screening_completed",
+    "scheduledAt": "2025-05-30T08:22:45.687Z",
+    "createdAt": "2025-05-30T08:22:45.687Z",
+    "updatedAt": "2025-05-30T08:24:16.331Z",
+    "date": "2025-05-30T08:22:45.687Z",
+    "role": "general",
+    "errorMessage": "Call failed",
+    "transcript": "Call completed - transcript processing pending",
+    "audioUrl": "Call completed - audio processing pending"
+  },
+  {
+    "id": "screening_1748593365687",
+    "applicationId": "app-1748593363819",
+    "candidateId": "candidate-1748593363819",
+    "jobId": "job-002",
+    "status": "scheduled",
+    "scheduledAt": "2025-05-30T08:22:45.687Z",
+    "createdAt": "2025-05-30T08:22:45.687Z",
+    "updatedAt": "2025-05-30T08:22:45.687Z",
+    "date": "2025-05-30T08:22:45.687Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748596888651",
+    "applicationId": "app-1748596887281",
+    "candidateId": "candidate-1748596887280",
+    "jobId": "job-001",
+    "status": "scheduled",
+    "scheduledAt": "2025-05-30T09:21:28.651Z",
+    "createdAt": "2025-05-30T09:21:28.651Z",
+    "updatedAt": "2025-05-30T09:21:28.651Z",
+    "date": "2025-05-30T09:21:28.651Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748596888651",
+    "applicationId": "app-1748596887281",
+    "candidateId": "candidate-1748596887280",
+    "jobId": "job-001",
+    "status": "scheduled",
+    "scheduledAt": "2025-05-30T09:21:28.651Z",
+    "createdAt": "2025-05-30T09:21:28.651Z",
+    "updatedAt": "2025-05-30T09:21:28.651Z",
+    "date": "2025-05-30T09:21:28.651Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748599689575",
+    "applicationId": "app-1748599687636",
+    "candidateId": "candidate-1748599687635",
+    "jobId": "job-001",
+    "status": "scheduled",
+    "scheduledAt": "2025-05-30T10:08:09.575Z",
+    "createdAt": "2025-05-30T10:08:09.575Z",
+    "updatedAt": "2025-05-30T10:08:09.575Z",
+    "date": "2025-05-30T10:08:09.575Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748599689577",
+    "applicationId": "app-1748599687636",
+    "candidateId": "candidate-1748599687635",
+    "jobId": "job-001",
+    "status": "screening_completed",
+    "scheduledAt": "2025-05-30T10:08:09.577Z",
+    "createdAt": "2025-05-30T10:08:09.577Z",
+    "updatedAt": "2025-05-30T10:09:36.896Z",
+    "date": "2025-05-30T10:08:09.577Z",
+    "role": "general",
+    "errorMessage": "Call failed",
+    "transcript": "Call completed - transcript processing pending",
+    "audioUrl": "Call completed - audio processing pending"
+  }
+]

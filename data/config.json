@@ -1,0 +1,124 @@
+{
+  "roles": {
+    "server": {
+      "name": "Server",
+      "department": "Front of House",
+      "screeningQuestions": [
+        "Do you have previous serving experience?",
+        "How comfortable are you handling cash transactions?",
+        "Can you describe your customer service experience?"
+      ],
+      "evaluationCriteria": {
+        "experience": {
+          "weight": 0.3,
+          "description": "Previous restaurant or service experience"
+        },
+        "availability": {
+          "weight": 0.4,
+          "description": "Flexibility with shifts and weekend work"
+        },
+        "customerService": {
+          "weight": 0.3,
+          "description": "Customer service skills and attitude"
+        }
+      }
+    },
+    "cook": {
+      "name": "Cook",
+      "department": "Back of House",
+      "screeningQuestions": [
+        "Do you have experience working in a commercial kitchen?",
+        "How comfortable are you working under pressure?",
+        "Can you describe your food safety knowledge?"
+      ],
+      "evaluationCriteria": {
+        "experience": {
+          "weight": 0.4,
+          "description": "Commercial kitchen experience"
+        },
+        "availability": {
+          "weight": 0.3,
+          "description": "Flexibility with shifts and weekend work"
+        },
+        "foodSafety": {
+          "weight": 0.3,
+          "description": "Food safety knowledge and practices"
+        }
+      }
+    },
+    "host": {
+      "name": "Host",
+      "department": "Front of House",
+      "screeningQuestions": [
+        "What customer service experience do you have?",
+        "How do you handle stressful situations with customers?",
+        "Are you comfortable using computer systems for reservations?"
+      ],
+      "evaluationCriteria": {
+        "experience": {
+          "weight": 0.2,
+          "description": "Customer service or hospitality experience"
+        },
+        "availability": {
+          "weight": 0.4,
+          "description": "Evening and weekend availability"
+        },
+        "communication": {
+          "weight": 0.4,
+          "description": "Professional demeanor and communication skills"
+        }
+      }
+    },
+    "general": {
+      "name": "General Staff",
+      "department": "General",
+      "screeningQuestions": [
+        "What experience do you have that is relevant to this position?",
+        "What are your strengths in a fast-paced work environment?",
+        "How would you contribute to a positive team atmosphere?"
+      ],
+      "evaluationCriteria": {
+        "experience": {
+          "weight": 0.4,
+          "description": "Relevant work experience"
+        },
+        "availability": {
+          "weight": 0.3,
+          "description": "Schedule flexibility"
+        },
+        "teamwork": {
+          "weight": 0.3,
+          "description": "Communication and teamwork skills"
+        }
+      }
+    }
+  },
+  "mandatoryQuestions": [
+    "Are you available to work morning shifts (6 AM - 2 PM)?",
+    "Are you available to work evening shifts (2 PM - 10 PM)?",
+    "Can you work weekends?",
+    "Do you have reliable transportation to get to work?"
+  ],
+  "vapiSettings": {
+    "voice": {
+      "provider": "playht",
+      "voiceId": "jennifer"
+    },
+    "model": {
+      "provider": "openai",
+      "model": "gpt-4"
+    },
+    "transcriber": {
+      "provider": "deepgram",
+      "model": "nova-2",
+      "language": "en-US"
+    },
+    "conversationTone": "friendly and professional",
+    "maxCallDuration": 300
+  },
+  "applicationSettings": {
+    "maxResumeSize": "5MB",
+    "allowedFileTypes": [".pdf", ".docx"],
+    "autoAdvanceToScreening": true
+  }
+}

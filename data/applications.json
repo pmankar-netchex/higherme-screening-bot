@@ -1,0 +1,122 @@
+[
+  {
+    "candidateId": "candidate-1748591890358",
+    "jobId": "job-002",
+    "submittedAt": "2025-05-30T07:58:10.358Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-05-30T07:58:10.358Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748591890358",
+    "createdAt": "2025-05-30T07:58:10.358Z",
+    "updatedAt": "2025-05-30T07:58:10.358Z"
+  },
+  {
+    "candidateId": "candidate-1748591890358",
+    "jobId": "job-001",
+    "submittedAt": "2025-05-30T12:00:00.000Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-05-30T12:00:00.000Z",
+        "notes": "Application submitted for testing",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-test-001",
+    "createdAt": "2025-05-30T12:00:00.000Z",
+    "updatedAt": "2025-05-30T12:00:00.000Z"
+  },
+  {
+    "candidateId": "candidate-1748592614870",
+    "jobId": "job-003",
+    "submittedAt": "2025-05-30T08:10:14.871Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-05-30T08:10:14.871Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748592614871",
+    "createdAt": "2025-05-30T08:10:14.871Z",
+    "updatedAt": "2025-05-30T08:10:14.871Z"
+  },
+  {
+    "candidateId": "candidate-1748593363819",
+    "jobId": "job-002",
+    "submittedAt": "2025-05-30T08:22:43.819Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-05-30T08:22:43.819Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748593363819",
+    "createdAt": "2025-05-30T08:22:43.819Z",
+    "updatedAt": "2025-05-30T08:22:43.819Z"
+  },
+  {
+    "candidateId": "candidate-1748596887280",
+    "jobId": "job-001",
+    "submittedAt": "2025-05-30T09:21:27.281Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-05-30T09:21:27.281Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748596887281",
+    "createdAt": "2025-05-30T09:21:27.281Z",
+    "updatedAt": "2025-05-30T09:21:27.281Z"
+  },
+  {
+    "candidateId": "candidate-1748599687635",
+    "jobId": "job-001",
+    "submittedAt": "2025-05-30T10:08:07.636Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-05-30T10:08:07.636Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748599687636",
+    "createdAt": "2025-05-30T10:08:07.636Z",
+    "updatedAt": "2025-05-30T10:08:07.636Z"
+  }
+]

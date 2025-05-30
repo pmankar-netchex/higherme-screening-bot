@@ -1,0 +1,52 @@
+[
+  {
+    "firstName": "Sarah",
+    "lastName": "Seraphim",
+    "email": "ssaphm@qwerty.com",
+    "phone": "111222334455",
+    "resumeUrl": "/uploads/resumes/temp_1748591890203_1748591890304_QWSzJtQX.pdf",
+    "id": "candidate-1748591890358",
+    "createdAt": "2025-05-30T07:58:10.358Z",
+    "updatedAt": "2025-05-30T07:58:10.358Z"
+  },
+  {
+    "firstName": "Pranav",
+    "lastName": "Mankar",
+    "email": "pmasdanasdkar@netchexonline.com",
+    "phone": "01234567890",
+    "resumeUrl": "/uploads/resumes/temp_1748592614690_1748592614799_QWSzJtQX.pdf",
+    "id": "candidate-1748592614870",
+    "createdAt": "2025-05-30T08:10:14.870Z",
+    "updatedAt": "2025-05-30T08:10:14.870Z"
+  },
+  {
+    "firstName": "Jay",
+    "lastName": "Johntotta-jacobs",
+    "email": "jjjacobs@gmail.co",
+    "phone": "01234567890",
+    "resumeUrl": "/uploads/resumes/temp_1748593363673_1748593363809_iQTLSNYl.pdf",
+    "id": "candidate-1748593363819",
+    "createdAt": "2025-05-30T08:22:43.819Z",
+    "updatedAt": "2025-05-30T08:22:43.819Z"
+  },
+  {
+    "firstName": "Jake",
+    "lastName": "Jonta",
+    "email": "jjon@123.com",
+    "phone": "1234567890",
+    "resumeUrl": "/uploads/resumes/temp_1748596887077_1748596887205_BicaNJns.pdf",
+    "id": "candidate-1748596887280",
+    "createdAt": "2025-05-30T09:21:27.280Z",
+    "updatedAt": "2025-05-30T09:21:27.280Z"
+  },
+  {
+    "firstName": "joe",
+    "lastName": "dogma",
+    "email": "jd@jd.com",
+    "phone": "123456789",
+    "resumeUrl": "/uploads/resumes/temp_1748599687417_1748599687562_FnwSJUbu.pdf",
+    "id": "candidate-1748599687635",
+    "createdAt": "2025-05-30T10:08:07.635Z",
+    "updatedAt": "2025-05-30T10:08:07.635Z"
+  }
+]

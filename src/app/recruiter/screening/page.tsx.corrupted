@@ -1,0 +1,22 @@
+'usimport { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+// Use dynamic import with SSR disabled for the content component
+const ScreeningContent = dynamic(() => import('./screening-content'), { 
+  ssr: false,
+  loading: () => <div className="p-4 text-center">Loading screening data...</div>
+});ient';
+
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
+import { Suspense } from 'react';
+import ScreeningContent from './screening-content';
+
+export default function RecruiterScreeningPage() {
+  return (
+    <Suspense fallback={<div className="p-4 text-center">Loading screening data...</div>}>
+      <ScreeningContent />
+    </Suspense>
+  );
+}
