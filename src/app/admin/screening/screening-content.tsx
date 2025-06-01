@@ -18,7 +18,7 @@ type TabType = 'roles' | 'voice' | 'prompts' | 'evaluation' | 'rolemanagement';
 export default function ScreeningContent() {
   // Get search params for tab
   const searchParams = useSearchParams();
-  const tabParam = searchParams.get('tab');
+  const tabParam = searchParams?.get('tab');
   
   // State for active tab
   const [activeTab, setActiveTab] = useState<TabType>(

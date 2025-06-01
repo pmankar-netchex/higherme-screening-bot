@@ -50,6 +50,23 @@ export function updateScreeningStatus(
     return null;
   }
 
+  // Validate status consistency
+  if (status === 'screening_completed') {
+    // If marking as completed, ensure we don't have error messages and we have required data
+    if (additionalData.errorMessage) {
+      console.warn('Cannot mark screening as completed when there is an error message. Use "rejected" status instead.');
+      status = 'rejected';
+    }
+  }
+  
+  if (status === 'rejected' || additionalData.errorMessage) {
+    // If there's an error or rejected status, clear any summary data and ensure consistent state
+    additionalData.summary = undefined;
+    if (additionalData.errorMessage && status === 'screening_completed') {
+      status = 'rejected';
+    }
+  }
+
   // Update the screening
   screenings[screeningIndex] = {
     ...screenings[screeningIndex],

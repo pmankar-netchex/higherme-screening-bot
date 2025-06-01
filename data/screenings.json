@@ -1,200 +1,156 @@
 [
   {
-    "id": "screening_1748592368474",
-    "applicationId": "app-test-001",
-    "candidateId": "candidate-1748591890358",
-    "jobId": "job-001",
-    "status": "completed",
-    "scheduledAt": "2025-05-30T08:06:08.474Z",
-    "createdAt": "2025-05-30T08:06:08.474Z",
-    "updatedAt": "2025-05-30T08:10:00.000Z",
-    "completedAt": "2025-05-30T08:18:09.977Z",
-    "date": "2025-05-30T08:06:08.474Z",
-    "role": "server",
-    "transcript": "Call completed - transcript processing pending",
-    "audioUrl": "https://example.com/audio-recordings/screening-call.mp3",
-    "summary": {
-      "experience": {
-        "evaluation": "Candidate has 3 years of experience in restaurant service.",
-        "highlights": [
-          "Previous experience as server",
-          "Worked in high-volume restaurant"
-        ]
-      },
-      "availability": {
-        "morning": true,
-        "evening": true,
-        "weekends": true,
-        "notes": "Available all days except Sunday mornings."
-      },
-      "transportation": {
-        "hasReliableTransportation": true,
-        "notes": "Has own vehicle."
-      },
-      "softSkills": {
-        "evaluation": "Strong communication skills, friendly demeanor.",
-        "highlights": [
-          "Excellent communication",
-          "Team player"
-        ]
-      },
-      "roleSpecific": {
-        "evaluation": "Good fit for server position based on experience.",
-        "strengths": [
-          "Customer service focus",
-          "Menu knowledge"
-        ],
-        "areas_of_improvement": [
-          "Wine knowledge could be improved"
-        ]
-      }
-    },
-    "duration": 180
-  },
-  {
-    "id": "screening_1748592616917",
-    "applicationId": "app-1748592614871",
-    "candidateId": "candidate-1748592614870",
-    "jobId": "job-003",
-    "status": "screening_completed",
-    "scheduledAt": "2025-05-30T08:10:16.917Z",
-    "createdAt": "2025-05-30T08:10:16.917Z",
-    "updatedAt": "2025-05-30T08:11:11.053Z",
-    "completedAt": "2025-05-30T08:12:00.000Z",
-    "date": "2025-05-30T08:10:16.917Z",
-    "role": "general",
-    "transcript": "Completed screening call with candidate discussing technical background and role fit.",
-    "audioUrl": "/uploads/audio/screening_1748592616917.mp3",
-    "duration": 240,
-    "summary": {
-      "experience": {
-        "evaluation": "Candidate has 2 years of experience in software development with focus on web applications.",
-        "highlights": [
-          "Experience with React and JavaScript",
-          "Worked on e-commerce projects",
-          "Understanding of REST APIs"
-        ]
-      },
-      "availability": {
-        "morning": true,
-        "evening": false,
-        "weekends": true,
-        "notes": "Prefers morning shifts, available weekends but not Sunday evenings."
-      },
-      "transportation": {
-        "hasReliableTransportation": true,
-        "notes": "Has own vehicle and public transport access."
-      },
-      "softSkills": {
-        "evaluation": "Good communication skills, shows enthusiasm for learning.",
-        "highlights": [
-          "Strong problem-solving abilities",
-          "Team collaboration",
-          "Eager to learn new technologies"
-        ]
-      },
-      "roleSpecific": {
-        "evaluation": "Good technical foundation for junior developer role.",
-        "strengths": [
-          "Quick learner",
-          "Solid JavaScript fundamentals",
-          "Experience with modern frameworks"
-        ],
-        "areas_of_improvement": [
-          "Could benefit from more backend experience",
-          "Testing knowledge needs improvement"
-        ]
-      }
-    }
-  },
-  {
-    "id": "screening_1748592616917",
-    "applicationId": "app-1748592614871",
-    "candidateId": "candidate-1748592614870",
-    "jobId": "job-003",
-    "status": "scheduled",
-    "scheduledAt": "2025-05-30T08:10:16.917Z",
-    "createdAt": "2025-05-30T08:10:16.917Z",
-    "updatedAt": "2025-05-30T08:10:16.917Z",
-    "date": "2025-05-30T08:10:16.917Z",
-    "role": "general"
-  },
-  {
-    "id": "screening_1748593365687",
-    "applicationId": "app-1748593363819",
-    "candidateId": "candidate-1748593363819",
-    "jobId": "job-002",
-    "status": "screening_completed",
-    "scheduledAt": "2025-05-30T08:22:45.687Z",
-    "createdAt": "2025-05-30T08:22:45.687Z",
-    "updatedAt": "2025-05-30T08:24:16.331Z",
-    "date": "2025-05-30T08:22:45.687Z",
-    "role": "general",
-    "errorMessage": "Call failed",
-    "transcript": "Call completed - transcript processing pending",
-    "audioUrl": "Call completed - audio processing pending"
-  },
-  {
-    "id": "screening_1748593365687",
-    "applicationId": "app-1748593363819",
-    "candidateId": "candidate-1748593363819",
+    "id": "screening_1748771124934",
+    "applicationId": "app-1748770852210",
+    "candidateId": "candidate-1748770852209",
     "jobId": "job-002",
     "status": "scheduled",
-    "scheduledAt": "2025-05-30T08:22:45.687Z",
-    "createdAt": "2025-05-30T08:22:45.687Z",
-    "updatedAt": "2025-05-30T08:22:45.687Z",
-    "date": "2025-05-30T08:22:45.687Z",
+    "scheduledAt": "2025-06-01T09:45:24.934Z",
+    "createdAt": "2025-06-01T09:45:24.934Z",
+    "updatedAt": "2025-06-01T09:45:24.934Z",
+    "date": "2025-06-01T09:45:24.934Z",
     "role": "general"
   },
   {
-    "id": "screening_1748596888651",
-    "applicationId": "app-1748596887281",
-    "candidateId": "candidate-1748596887280",
-    "jobId": "job-001",
+    "id": "screening_1748772054531",
+    "applicationId": "app-1748770852210",
+    "candidateId": "candidate-1748770852209",
+    "jobId": "job-002",
     "status": "scheduled",
-    "scheduledAt": "2025-05-30T09:21:28.651Z",
-    "createdAt": "2025-05-30T09:21:28.651Z",
-    "updatedAt": "2025-05-30T09:21:28.651Z",
-    "date": "2025-05-30T09:21:28.651Z",
+    "scheduledAt": "2025-06-01T10:00:54.531Z",
+    "createdAt": "2025-06-01T10:00:54.531Z",
+    "updatedAt": "2025-06-01T10:00:54.531Z",
+    "date": "2025-06-01T10:00:54.531Z",
     "role": "general"
   },
   {
-    "id": "screening_1748596888651",
-    "applicationId": "app-1748596887281",
-    "candidateId": "candidate-1748596887280",
-    "jobId": "job-001",
+    "id": "screening_1748772054543",
+    "applicationId": "app-1748770852210",
+    "candidateId": "candidate-1748770852209",
+    "jobId": "job-002",
     "status": "scheduled",
-    "scheduledAt": "2025-05-30T09:21:28.651Z",
-    "createdAt": "2025-05-30T09:21:28.651Z",
-    "updatedAt": "2025-05-30T09:21:28.651Z",
-    "date": "2025-05-30T09:21:28.651Z",
+    "scheduledAt": "2025-06-01T10:00:54.543Z",
+    "createdAt": "2025-06-01T10:00:54.543Z",
+    "updatedAt": "2025-06-01T10:00:54.543Z",
+    "date": "2025-06-01T10:00:54.543Z",
     "role": "general"
   },
   {
-    "id": "screening_1748599689575",
-    "applicationId": "app-1748599687636",
-    "candidateId": "candidate-1748599687635",
-    "jobId": "job-001",
+    "id": "screening_1748772054550",
+    "applicationId": "app-1748770852210",
+    "candidateId": "candidate-1748770852209",
+    "jobId": "job-002",
     "status": "scheduled",
-    "scheduledAt": "2025-05-30T10:08:09.575Z",
-    "createdAt": "2025-05-30T10:08:09.575Z",
-    "updatedAt": "2025-05-30T10:08:09.575Z",
-    "date": "2025-05-30T10:08:09.575Z",
+    "scheduledAt": "2025-06-01T10:00:54.550Z",
+    "createdAt": "2025-06-01T10:00:54.550Z",
+    "updatedAt": "2025-06-01T10:00:54.550Z",
+    "date": "2025-06-01T10:00:54.550Z",
     "role": "general"
   },
   {
-    "id": "screening_1748599689577",
-    "applicationId": "app-1748599687636",
-    "candidateId": "candidate-1748599687635",
-    "jobId": "job-001",
-    "status": "screening_completed",
-    "scheduledAt": "2025-05-30T10:08:09.577Z",
-    "createdAt": "2025-05-30T10:08:09.577Z",
-    "updatedAt": "2025-05-30T10:09:36.896Z",
-    "date": "2025-05-30T10:08:09.577Z",
+    "id": "screening_1748772075725",
+    "applicationId": "app-1748772074281",
+    "candidateId": "candidate-1748772074280",
+    "jobId": "job-003",
+    "status": "scheduled",
+    "scheduledAt": "2025-06-01T10:01:15.725Z",
+    "createdAt": "2025-06-01T10:01:15.725Z",
+    "updatedAt": "2025-06-01T10:01:15.725Z",
+    "date": "2025-06-01T10:01:15.725Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748772075739",
+    "applicationId": "app-1748772074281",
+    "candidateId": "candidate-1748772074280",
+    "jobId": "job-003",
+    "status": "scheduled",
+    "scheduledAt": "2025-06-01T10:01:15.739Z",
+    "createdAt": "2025-06-01T10:01:15.739Z",
+    "updatedAt": "2025-06-01T10:01:15.739Z",
+    "date": "2025-06-01T10:01:15.739Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748772075747",
+    "applicationId": "app-1748772074281",
+    "candidateId": "candidate-1748772074280",
+    "jobId": "job-003",
+    "status": "rejected",
+    "scheduledAt": "2025-06-01T10:01:15.747Z",
+    "createdAt": "2025-06-01T10:01:15.747Z",
+    "updatedAt": "2025-06-01T10:25:06.446Z",
+    "date": "2025-06-01T10:01:15.747Z",
     "role": "general",
-    "errorMessage": "Call failed",
-    "transcript": "Call completed - transcript processing pending",
-    "audioUrl": "Call completed - audio processing pending"
+    "completedAt": "2025-06-01T10:25:06.446Z",
+    "errorMessage": "Stale screening call cleaned up automatically"
+  },
+  {
+    "id": "screening_1748772102438",
+    "applicationId": "app-1748770852210",
+    "candidateId": "candidate-1748770852209",
+    "jobId": "job-002",
+    "status": "scheduled",
+    "scheduledAt": "2025-06-01T10:01:42.438Z",
+    "createdAt": "2025-06-01T10:01:42.438Z",
+    "updatedAt": "2025-06-01T10:01:42.438Z",
+    "date": "2025-06-01T10:01:42.438Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748773506541",
+    "applicationId": "app-1748773503948",
+    "candidateId": "candidate-1748773503947",
+    "jobId": "job-002",
+    "status": "screening_completed",
+    "scheduledAt": "2025-06-01T10:25:06.541Z",
+    "createdAt": "2025-06-01T10:25:06.541Z",
+    "updatedAt": "2025-06-01T10:26:37.655Z",
+    "date": "2025-06-01T10:25:06.541Z",
+    "role": "general",
+    "summary": "# Line Cook Screening Call Summary\n\n## Candidate: Jeremy\n\n### 1. Relevant Experience\n* Candidate declined to share any relevant experience for the line cook position.\n\n### 2. Availability\n* **Shifts**: Available for morning shifts only\n* **Weekends**: Available to work weekends\n* **Transportation**: Does not have reliable transportation to and from work\n\n### 3. Key Responses to Role-Specific Questions\n* When asked about specific skills related to the line cook position (food prep, grilling, high-paced kitchen experience), the candidate responded with \"Not really.\"\n\n### 4. Communication Skills Assessment\n* Extremely brief responses throughout the interview\n* Minimal engagement with questions\n* Demonstrated unwillingness to elaborate on qualifications or experience\n\n### 5. Concerns/Red Flags\n* Candidate declined to share any relevant experience\n* Lacks reliable transportation, which would impact dependability\n* Indicated no specific skills related to the position\n* Demonstrated poor communication and minimal interest during the screening call\n* Overall lack of engagement suggests potential motivation issues\n\n**Overall Assessment**: Based on the screening call, this candidate does not appear to be a suitable match for the line cook position due to lack of demonstrated experience, skills, transportation issues, and poor communication during the screening process.",
+    "transcript": "AI: Hi, Jeremy. I'm the AI screening assistant for the Lioncook position This call will take about 2, 3 minutes and will be recorded for quality and training purposes. I'll be asking you some questions about your experience and availability. Let's get started. Could you tell me about your relevant experience for this line cook role?\nUser: No.\nAI: Alright. That's okay. Let's move on to your availability. Can you let me know if you're available to work morning or evening shifts?\nUser: Morning,\nAI: Thank you. Are you available to work on weekends as well?\nUser: Yes.\nAI: Great. Do you have reliable transportation to and from work?\nUser: No.\nAI: Thanks for letting me know. Now could you share any specific skills you have that are related to the line cook position such as food prep, grilling, or working in high paced kitchens?\nUser: Not really.\nAI: Thank you for your honesty. I appreciate your time and responses today. A recruiter will review the information you provided and get back to you soon. Have a great day. Goodbye.\n",
+    "audioUrl": "https://storage.vapi.ai/b46a3086-4276-4460-8cb3-571af8682003-1748773589865-ef52e7d4-59c9-4411-9ecf-19f831ec3b97-mono.wav",
+    "completedAt": "2025-06-01T10:26:37.618Z"
+  },
+  {
+    "id": "screening_1748773506541",
+    "applicationId": "app-1748773503948",
+    "candidateId": "candidate-1748773503947",
+    "jobId": "job-002",
+    "status": "scheduled",
+    "scheduledAt": "2025-06-01T10:25:06.541Z",
+    "createdAt": "2025-06-01T10:25:06.541Z",
+    "updatedAt": "2025-06-01T10:25:06.541Z",
+    "date": "2025-06-01T10:25:06.541Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748774298805",
+    "applicationId": "app-1748774296432",
+    "candidateId": "candidate-1748774296431",
+    "jobId": "job-002",
+    "status": "scheduled",
+    "scheduledAt": "2025-06-01T10:38:18.805Z",
+    "createdAt": "2025-06-01T10:38:18.805Z",
+    "updatedAt": "2025-06-01T10:38:18.805Z",
+    "date": "2025-06-01T10:38:18.805Z",
+    "role": "general"
+  },
+  {
+    "id": "screening_1748774298808",
+    "applicationId": "app-1748774296432",
+    "candidateId": "candidate-1748774296431",
+    "jobId": "job-002",
+    "status": "screening_completed",
+    "scheduledAt": "2025-06-01T10:38:18.808Z",
+    "createdAt": "2025-06-01T10:38:18.808Z",
+    "updatedAt": "2025-06-01T10:40:07.611Z",
+    "date": "2025-06-01T10:38:18.808Z",
+    "role": "general",
+    "summary": "# Line Cook Screening Call Summary\n\n## 1. Candidate's Relevant Experience\n- No prior line cook or kitchen experience\n- Expressed enthusiasm for learning cooking techniques\n- No specific skills related to cooking or kitchen work mentioned\n\n## 2. Availability\n- Available only for morning shifts\n- Willing to work weekends\n- Has personal vehicle for transportation to work\n\n## 3. Key Responses to Role-Specific Questions\n- Stated interest in learning cooking techniques\n- Expressed willingness to work in a fast-paced kitchen environment\n- Mentioned they \"haven't been looking for a while\" when asked about cooking skills\n\n## 4. Overall Assessment of Communication Skills\n- Provided brief, direct responses\n- Communication was clear but minimal\n- Engaged positively with questions despite limited experience\n\n## 5. Concerns/Red Flags\n- Complete lack of relevant experience may require extensive training\n- Limited to morning shifts only, which may impact scheduling flexibility\n- Unclear response about cooking skills (\"I haven't been looking for a while\") suggests possible confusion or lack of preparation for the interview\n\nThis candidate shows enthusiasm but would require complete training from the ground up. They would be suitable only if the restaurant is willing to invest in training a complete beginner with morning-only availability.",
+    "transcript": "AI: Hi, Will. I'm the AI screening assistant for the line Cook position. This call will take about 2, 3 minutes and will be recorded for quality and training purposes. I'll be asking you some questions about your experience and availability, a Let's get started. Could you tell me about your relevant experience for this line cook role?\nUser: I don't have any experience.\nAI: Thank you for sharing that. Do you mind telling me whether you have any interest in learning cooking techniques or working in a paced kitchen environment?\nUser: Yeah. I would love to.\nAI: That's great to hear. Moving on, can you tell me about your availability? Are you open to working morning or evening shifts?\nUser: I'm available only for morning shifts.\nAI: Got it. Are you available to work on weekends as well?\nUser: Yes. I can work on weekends.\nAI: Thank you. Thanks. How about transportation? Do you have reliable arrangements to get to work on time?\nUser: I have my own weakness.\nAI: Perfect. Thank you for letting me know. Finally, do you have any skills related to cooking or the kitchen you'd like to mention? For example, food preparation, basic knife skills, or an interest in learning new techniques.\nUser: Yeah. I haven't\nAI: That's\nUser: been looking for a while.\nAI: Thank you for sharing that. I appreciate your honesty and enthusiasm to learn. That's all the questions I have for now. We'll review your responses, and a recruiter will reach out to you regarding the next steps. Thank you for your time, and have a great day. Goodbye.\n",
+    "audioUrl": "https://storage.vapi.ai/7cb28b1c-efa3-4bb1-a9ef-3c148dc7400c-1748774399716-55bbd046-ae52-4b44-8307-9aab6eda5c2e-mono.wav",
+    "completedAt": "2025-06-01T10:40:07.560Z"
   }
 ]

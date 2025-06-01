@@ -10,4 +10,4 @@ build/
 # Ignore test coverage reports
 coverage/
 public/
-
+.next/

@@ -1,4 +1,4 @@
-import { ScreeningRole } from '../shared/types';
+import { ScreeningRole } from '../types';
 
 // Helper function to get the correct API URL
 const getApiUrl = (): string => {
@@ -29,6 +29,8 @@ export interface RoleConfig {
   evaluationCriteria: EvaluationCriteriaSet;
 }
 
+
+
 export interface ScreeningConfig {
   roles: {
     [key in ScreeningRole | string]: RoleConfig;
@@ -55,6 +57,14 @@ export interface ScreeningConfig {
     maxResumeSize: string;
     allowedFileTypes: string[];
     autoAdvanceToScreening: boolean;
+  };
+  generalSettings: {
+    maxCallDuration: number;
+    language: string;
+    voice: {
+      provider: string;
+      voiceId: string;
+    };
   };
 }
 
@@ -141,3 +151,4 @@ export const deleteRoleConfig = async (roleType: string): Promise<void> => {
     throw new Error(`Failed to delete ${roleType} configuration`);
   }
 };
+

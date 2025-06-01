@@ -1,17 +1,17 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
-import VoiceScreeningCall from '@/components/features/screening/VoiceScreeningCall';
+import { UnifiedVoiceScreeningCall } from '@/components/features/screening';
 import { Job, Candidate, ScreeningSummary } from '@/lib/types';
 import Link from 'next/link';
 
 // Content component that uses search params
 function ScreeningPageContent() {
   const searchParams = useSearchParams();
-  const jobId = searchParams.get('jobId') || '';
-  const candidateId = searchParams.get('candidateId') || '';
-  const applicationId = searchParams.get('applicationId') || '';
+  const jobId = searchParams?.get('jobId') || '';
+  const candidateId = searchParams?.get('candidateId') || '';
+  const applicationId = searchParams?.get('applicationId') || '';
   
   const [job, setJob] = useState<Job | null>(null);
   const [candidate, setCandidate] = useState<Candidate | null>(null);
@@ -69,13 +69,13 @@ function ScreeningPageContent() {
     }
   }, [jobId, candidateId]);
   
-  // Handle call events
-  const handleCallStart = () => {
+  // Handle call events - memoized to prevent unnecessary re-renders
+  const handleCallStart = useCallback(() => {
     console.log('Screening call started');
     // Here you would update the application status in a real app
-  };
+  }, []);
   
-  const handleCallEnd = (summary?: any) => {
+  const handleCallEnd = useCallback((summary?: any) => {
     console.log('Screening call ended', summary);
     setCallComplete(true);
     
@@ -95,12 +95,12 @@ function ScreeningPageContent() {
     
     // Scroll to the top to show the completion message
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
   
-  const handleCallError = (error: Error) => {
+  const handleCallError = useCallback((error: Error) => {
     console.error('Call error:', error);
     setCallError(error);
-  };
+  }, []);
   
   // Handle candidate feedback submission
   const handleFeedbackSubmit = (e: React.FormEvent) => {
@@ -307,7 +307,7 @@ function ScreeningPageContent() {
           </div>
         </div>
         
-        <VoiceScreeningCall
+        <UnifiedVoiceScreeningCall
           jobId={jobId}
           candidateId={candidateId}
           applicationId={applicationId}

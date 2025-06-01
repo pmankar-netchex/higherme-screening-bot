@@ -168,11 +168,28 @@ export function createScreeningAssistantOptions(
       "transcript",
       "hang",
       "function-call",
+      "function-call-result",
       "speech-update",
       "metadata",
-      "conversation-update"
+      "conversation-update",
+      "model-output",
+      "status-update",
+      "tool-calls",
+      "tool-calls-result",
+      "tool.completed"
     ],
     recordingEnabled: true, // Enable recording to get audio URL
+    // Configure analysis plan to generate call summary
+    analysisPlan: {
+      summaryPrompt: `Analyze this ${jobTitle} screening call and provide a structured summary including:
+      1. Candidate's relevant experience
+      2. Availability (shifts, weekends, transportation)
+      3. Key responses to role-specific questions
+      4. Overall assessment of communication skills
+      5. Any concerns or red flags
+      
+      Format the response as a clear, professional summary for hiring managers.`,
+    },
     // Call ending configuration
     silenceTimeoutSeconds: 15, // End call after 15 seconds of silence
     maxDurationSeconds: config.maxCallDuration, // Use configured max duration (default 180 seconds)

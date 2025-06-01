@@ -207,13 +207,83 @@ export default function CandidateDetails({ candidate, application, job, onRefres
             </div>
           </div>
           
-          {/* Screening summary (if completed) */}
-          {candidate.screeningCompleted && candidate.screeningSummary && (
-            <ScreeningSummary 
-              screeningSummary={candidate.screeningSummary}
-              candidateId={candidate.id}
-            />
-          )}
+          {/* Screening summary section */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="px-6 py-4 border-b flex justify-between items-center">
+              <h2 className="text-xl font-semibold">Voice Screening Results</h2>
+              {onRefreshScreening && (
+                <button
+                  onClick={onRefreshScreening}
+                  disabled={refreshing}
+                  className="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {refreshing ? (
+                    <>
+                      <div className="animate-spin -ml-1 mr-2 h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+                      Fetching...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                      Fetch Latest Results
+                    </>
+                  )}
+                </button>
+              )}
+            </div>
+            <div className="p-6">
+              {candidate.screeningCompleted && candidate.screeningSummary ? (
+                <ScreeningSummary 
+                  screeningSummary={candidate.screeningSummary}
+                  candidateId={candidate.id}
+                />
+              ) : (
+                <div className="text-center py-12">
+                  <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  <h3 className="mt-2 text-sm font-medium text-gray-900">No screening results available</h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    This candidate hasn't completed a voice screening yet, or the results haven't been processed.
+                  </p>
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                    {onRefreshScreening && (
+                      <button
+                        onClick={onRefreshScreening}
+                        disabled={refreshing}
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {refreshing ? (
+                          <>
+                            <div className="animate-spin -ml-1 mr-3 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                            Checking for Results...
+                          </>
+                        ) : (
+                          <>
+                            <svg className="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Check for Latest Results
+                          </>
+                        )}
+                      </button>
+                    )}
+                    <Link 
+                      href={`/screening?candidateId=${candidate.id}&applicationId=${application.id}&jobId=${job.id}`}
+                      className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    >
+                      <svg className="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      Start Voice Screening
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
           
           {/* Recruiter notes section with edit capability */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden">

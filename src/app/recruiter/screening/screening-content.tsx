@@ -15,6 +15,9 @@ export default function ScreeningContent() {
   const [data, setData] = useState<ScreeningPageData>({ screenings: [], candidates: [], jobs: [] });
   const [loading, setLoading] = useState(true);
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
+  const [fetchingResults, setFetchingResults] = useState(false);
+  const [fetchError, setFetchError] = useState<string | null>(null);
+  const [applications, setApplications] = useState<any[]>([]);
   const searchParams = useSearchParams();
   const candidateId = searchParams.get('candidateId');
 
@@ -71,6 +74,42 @@ export default function ScreeningContent() {
     });
   };
 
+  // Fetch latest screening results
+  const fetchLatestResults = async () => {
+    setFetchingResults(true);
+    setFetchError(null);
+    
+    try {
+      const params = new URLSearchParams();
+      if (candidateId) params.append('candidateId', candidateId);
+      
+      const response = await fetch(`/api/applications?${params.toString()}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setApplications(result.applications);
+        // Optionally refresh screening data as well
+        const screeningsRes = await fetch(`/api/screening?${params.toString()}`);
+        if (screeningsRes.ok) {
+          const screeningsData = await screeningsRes.json();
+          setData(prev => ({ ...prev, screenings: screeningsData }));
+        }
+      } else {
+        setFetchError(result.error || 'Failed to fetch results');
+      }
+    } catch (err: any) {
+      setFetchError(err.message || 'Failed to fetch latest results');
+      console.error('Error fetching latest results:', err);
+    } finally {
+      setFetchingResults(false);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-7xl mx-auto">
@@ -87,18 +126,19 @@ export default function ScreeningContent() {
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="mb-6 flex items-center space-x-4">
-          <div>
-            <label htmlFor="status-filter" className="block text-sm font-medium text-gray-700 mb-1">
-              Filter by Status
-            </label>
-            <select
-              id="status-filter"
-              value={selectedStatus}
-              onChange={(e) => setSelectedStatus(e.target.value)}
-              className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-            >
+        {/* Filters and Actions */}
+        <div className="mb-6 flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div>
+              <label htmlFor="status-filter" className="block text-sm font-medium text-gray-700 mb-1">
+                Filter by Status
+              </label>
+              <select
+                id="status-filter"
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+              >
               <option value="all">All Sessions</option>
               <option value="screening_completed">Screening Completed</option>
               <option value="screening_scheduled">Scheduled</option>
@@ -107,6 +147,67 @@ export default function ScreeningContent() {
             </select>
           </div>
         </div>
+        
+        {/* Fetch Results Button */}
+        <div className="mb-4">
+          <button
+            onClick={fetchLatestResults}
+            disabled={fetchingResults}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {fetchingResults ? (
+              <>
+                <div className="animate-spin -ml-1 mr-3 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                Fetching...
+              </>
+            ) : (
+              <>
+                <svg className="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Fetch Latest Screening Results
+              </>
+            )}
+          </button>
+        </div>
+
+        {/* Error Message */}
+        {fetchError && (
+          <div className="mb-4 bg-red-50 border-l-4 border-red-400 p-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-red-700">{fetchError}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Applications Results */}
+        {applications.length > 0 && (
+          <div className="mb-6 bg-green-50 border-l-4 border-green-400 p-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-green-800">
+                  Latest Results Fetched Successfully
+                </h3>
+                <div className="mt-2 text-sm text-green-700">
+                  <p>Found {applications.length} application(s) for {candidateId ? `candidate ${candidateId}` : 'all candidates'}.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
         {/* Loading State */}
         {loading ? (

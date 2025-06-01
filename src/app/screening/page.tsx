@@ -88,7 +88,7 @@ function ErrorState({ message, backUrl, backText }: ErrorStateProps) {
 // Main component that uses search params
 function ScreeningContent() {
   const searchParams = useSearchParams();
-  const role = searchParams.get('role') || '';
+  const role = searchParams?.get('role') || '';
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
@@ -154,6 +154,20 @@ function ScreeningContent() {
             >
               Admin
             </Link>
+          </div>
+
+          {/* Test Enhanced SDK Link */}
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <h2 className="text-lg font-semibold mb-2">Developer Tools</h2>
+            <Link 
+              href="/screening/test-enhanced"
+              className="px-6 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 inline-block"
+            >
+              Test Enhanced Vapi SDK
+            </Link>
+            <p className="mt-2 text-sm text-gray-500">
+              Test the enhanced Vapi SDK features for audio links and screening summaries
+            </p>
           </div>
         </div>
       )}

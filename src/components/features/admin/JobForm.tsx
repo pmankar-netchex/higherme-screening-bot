@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Job } from '@/lib/types/jobs';
+import { Job } from '../../../lib/types/job';
 
 interface JobFormProps {
   job?: Job;

@@ -21,6 +21,7 @@ export default function CandidatePage({ params, searchParams }: CandidatePagePro
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const { candidateId } = params;
   const { applicationId } = searchParams;
@@ -42,7 +43,14 @@ export default function CandidatePage({ params, searchParams }: CandidatePagePro
       if (!applicationsResponse.ok) {
         throw new Error('Failed to fetch applications');
       }
-      const applications = await applicationsResponse.json();
+      const applicationsData = await applicationsResponse.json();
+      
+      // Check if the response has the expected structure
+      if (!applicationsData.success || !Array.isArray(applicationsData.applications)) {
+        throw new Error('Invalid applications response format');
+      }
+      
+      const applications = applicationsData.applications;
       
       // Get the specific application or the first one
       const application = applicationId 
@@ -65,51 +73,72 @@ export default function CandidatePage({ params, searchParams }: CandidatePagePro
       if (!screeningsResponse.ok) {
         console.warn('Failed to fetch screening data');
       } else {
-        const screenings = await screeningsResponse.json();
+        const screeningsData = await screeningsResponse.json();
+        
+        // Handle different response formats
+        const screenings = Array.isArray(screeningsData) ? screeningsData : 
+                          (screeningsData.screenings || screeningsData.data || []);
         
         // Find the most recent completed screening or any screening data
         const latestScreening = screenings
           .sort((a: any, b: any) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime())
-          .find((s: any) => s.status === 'screening_completed') || screenings[0];
+          .find((s: any) => s.status === 'screening_completed' && s.summary) || 
+          screenings.find((s: any) => s.status === 'completed' && s.summary);
         
-        // Convert ScreeningSummary to CandidateScreeningSummary format if screening exists
+        // Convert ScreeningSummary to CandidateScreeningSummary format if screening exists and has summary
         if (latestScreening?.summary) {
           const summary = latestScreening.summary;
+          
+          // Handle case where summary is a string (markdown) instead of structured object
+          let parsedSummary;
+          if (typeof summary === 'string') {
+            // Create a basic structure from string summary
+            parsedSummary = {
+              experience: { highlights: [], evaluation: '' },
+              availability: { morning: false, evening: false, weekends: false, notes: '' },
+              transportation: { hasReliableTransportation: false, notes: '' },
+              softSkills: { highlights: [], evaluation: '' },
+              roleSpecific: { evaluation: '', strengths: [], areas_of_improvement: [] }
+            };
+          } else {
+            parsedSummary = summary;
+          }
+          
           const candidateScreeningSummary = {
             callDuration: latestScreening.duration || 0,
             transcript: latestScreening.transcript,
             audioUrl: latestScreening.audioUrl,
             evaluations: {
               experience: {
-                score: summary.experience.highlights.length > 2 ? 'Good' : 'Average',
-                notes: summary.experience.evaluation
+                score: parsedSummary.experience?.highlights?.length > 2 ? 'Good' : 'Average',
+                notes: parsedSummary.experience?.evaluation || ''
               },
               availability: {
-                morningShift: summary.availability.morning,
-                eveningShift: summary.availability.evening,
-                weekendAvailable: summary.availability.weekends,
-                transportation: summary.transportation.hasReliableTransportation,
-                notes: summary.availability.notes
+                morningShift: parsedSummary.availability?.morning || false,
+                eveningShift: parsedSummary.availability?.evening || false,
+                weekendAvailable: parsedSummary.availability?.weekends || false,
+                transportation: parsedSummary.transportation?.hasReliableTransportation || false,
+                notes: parsedSummary.availability?.notes || ''
               },
               softSkills: {
-                score: summary.softSkills.highlights.length > 2 ? 'Good' : 'Average',
-                notes: summary.softSkills.evaluation
+                score: parsedSummary.softSkills?.highlights?.length > 2 ? 'Good' : 'Average',
+                notes: parsedSummary.softSkills?.evaluation || ''
               }
             },
             roleSpecificAnswers: {
-              'Role-specific evaluation': summary.roleSpecific.evaluation,
-              'Strengths': summary.roleSpecific.strengths.join(', '),
-              'Areas for improvement': summary.roleSpecific.areas_of_improvement.join(', ')
+              'Role-specific evaluation': parsedSummary.roleSpecific?.evaluation || '',
+              'Strengths': parsedSummary.roleSpecific?.strengths?.join(', ') || '',
+              'Areas for improvement': parsedSummary.roleSpecific?.areas_of_improvement?.join(', ') || ''
             },
-            overallSummary: `${summary.experience.evaluation} ${summary.softSkills.evaluation}`.trim(),
-            recommendedNextSteps: summary.roleSpecific.strengths.length > summary.roleSpecific.areas_of_improvement.length ? 
+            overallSummary: typeof summary === 'string' ? summary : `${parsedSummary.experience?.evaluation || ''} ${parsedSummary.softSkills?.evaluation || ''}`.trim(),
+            recommendedNextSteps: (parsedSummary.roleSpecific?.strengths?.length || 0) > (parsedSummary.roleSpecific?.areas_of_improvement?.length || 0) ? 
               'Recommended for further consideration' : 'Review additional qualifications',
             completedAt: latestScreening.completedAt || new Date().toISOString(),
             overallScore: 7.5,
             recommendation: 'maybe' as const,
-            aiSummary: JSON.stringify(summary),
-            strengths: summary.roleSpecific.strengths,
-            concerns: summary.roleSpecific.areas_of_improvement
+            aiSummary: typeof summary === 'string' ? summary : JSON.stringify(parsedSummary),
+            strengths: parsedSummary.roleSpecific?.strengths || [],
+            concerns: parsedSummary.roleSpecific?.areas_of_improvement || []
           };
 
           // Merge screening data into candidate object
@@ -140,7 +169,33 @@ export default function CandidatePage({ params, searchParams }: CandidatePagePro
   // Function to refresh screening results
   const refreshScreeningResults = async () => {
     setRefreshing(true);
-    await fetchData();
+    setError(null);
+    setSuccessMessage(null);
+    
+    try {
+      const previousScreeningStatus = candidateData?.candidate.screeningCompleted;
+      
+      // Force refetch all data to get the latest screening information
+      await fetchData();
+      
+      // Check if we found new screening data
+      const newScreeningStatus = candidateData?.candidate.screeningCompleted;
+      
+      if (!previousScreeningStatus && newScreeningStatus) {
+        setSuccessMessage('New screening results found and loaded successfully!');
+      } else if (newScreeningStatus) {
+        setSuccessMessage('Screening data refreshed successfully.');
+      } else {
+        setSuccessMessage('No new screening results found. The candidate may not have completed screening yet.');
+      }
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSuccessMessage(null), 5000);
+      
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to refresh screening data');
+      console.error('Error refreshing screening data:', err);
+    }
   };
 
   if (loading) {
@@ -184,6 +239,22 @@ export default function CandidatePage({ params, searchParams }: CandidatePagePro
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-7xl mx-auto">
+        {/* Success Message */}
+        {successMessage && (
+          <div className="mb-6 bg-green-50 border-l-4 border-green-400 p-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-green-700">{successMessage}</p>
+              </div>
+            </div>
+          </div>
+        )}
+        
         <CandidateDetails
           candidate={candidateData.candidate}
           application={candidateData.application}

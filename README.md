@@ -4,6 +4,7 @@ A Next.js application for restaurant recruitment with voice screening capabiliti
 
 ## Recent Updates
 
+- **Coming Soon Pages**: Added `/recruiter/screening/[candidateId]` route with a coming soon page for individual candidate screening details
 - **Folder Structure Reorganization**: The codebase has been reorganized into a more modular structure in the `src/` directory
 - **Component Migration**: All UI components have been moved to their proper locations under `src/components/`
 - **Data Layer Improvements**: Created repositories and services for better separation of concerns
