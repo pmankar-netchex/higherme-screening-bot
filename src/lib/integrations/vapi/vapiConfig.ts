@@ -21,6 +21,8 @@ export interface VapiConfig {
   };
   conversationTone: string;
   maxCallDuration: number;
+  customSystemPrompt?: string;
+  customAnalysisPrompt?: string;
 }
 
 // Default Vapi configuration
@@ -91,8 +93,19 @@ export function generateScreeningSystemPrompt(
   jobTitle: string, 
   roleType: ScreeningRole,
   roleSpecificQuestions: string[],
-  conversationTone: string = DEFAULT_VAPI_CONFIG.conversationTone
+  conversationTone: string = DEFAULT_VAPI_CONFIG.conversationTone,
+  customSystemPrompt?: string
 ): string {
+  // If custom system prompt is provided, use it with variable substitution
+  if (customSystemPrompt) {
+    return customSystemPrompt
+      .replace(/\{jobTitle\}/g, jobTitle)
+      .replace(/\{roleType\}/g, roleType)
+      .replace(/\{conversationTone\}/g, conversationTone)
+      .replace(/\{roleSpecificQuestions\}/g, roleSpecificQuestions.join('\n- '));
+  }
+
+  // Default system prompt
   return `You are an AI assistant conducting a screening interview for a ${jobTitle} position at a restaurant. 
 Your goal is to assess the candidate's experience, availability, and fit for the role in a ${conversationTone} manner.
 
@@ -137,8 +150,20 @@ export function createScreeningAssistantOptions(
     jobTitle,
     roleType,
     roleSpecificQuestions,
-    config.conversationTone
+    config.conversationTone,
+    config.customSystemPrompt
   );
+
+  // Get analysis prompt - use custom if available, otherwise default
+  const analysisPrompt = config.customAnalysisPrompt || 
+    `Analyze this ${jobTitle} screening call and provide a structured summary including:
+    1. Candidate's relevant experience
+    2. Availability (shifts, weekends, transportation)
+    3. Key responses to role-specific questions
+    4. Overall assessment of communication skills
+    5. Any concerns or red flags
+    
+    Format the response as a clear, professional summary for hiring managers.`;
 
   // Simple assistant configuration based on working vapi-react-demo sample
   return {
@@ -181,14 +206,7 @@ export function createScreeningAssistantOptions(
     recordingEnabled: true, // Enable recording to get audio URL
     // Configure analysis plan to generate call summary
     analysisPlan: {
-      summaryPrompt: `Analyze this ${jobTitle} screening call and provide a structured summary including:
-      1. Candidate's relevant experience
-      2. Availability (shifts, weekends, transportation)
-      3. Key responses to role-specific questions
-      4. Overall assessment of communication skills
-      5. Any concerns or red flags
-      
-      Format the response as a clear, professional summary for hiring managers.`,
+      summaryPrompt: analysisPrompt,
     },
     // Call ending configuration
     silenceTimeoutSeconds: 15, // End call after 15 seconds of silence

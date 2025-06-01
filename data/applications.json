@@ -174,5 +174,81 @@
     "id": "app-1748774296432",
     "createdAt": "2025-06-01T10:38:16.432Z",
     "updatedAt": "2025-06-01T10:40:07.558Z"
+  },
+  {
+    "candidateId": "candidate-1748786808173",
+    "jobId": "job-003",
+    "submittedAt": "2025-06-01T14:06:48.175Z",
+    "status": "screening_completed",
+    "currentStep": "screening_call_completed",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-06-01T14:06:48.175Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      },
+      {
+        "step": "screening_call_completed",
+        "status": "completed",
+        "timestamp": "2025-06-01T14:08:39.660Z",
+        "notes": "AI screening completed successfully",
+        "completedBy": "system",
+        "performedBy": "system"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748786808175",
+    "createdAt": "2025-06-01T14:06:48.175Z",
+    "updatedAt": "2025-06-01T14:08:39.660Z"
+  },
+  {
+    "candidateId": "candidate-1748786983840",
+    "jobId": "job-002",
+    "submittedAt": "2025-06-01T14:09:43.840Z",
+    "status": "submitted",
+    "currentStep": "application_submitted",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-06-01T14:09:43.841Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748786983841",
+    "createdAt": "2025-06-01T14:09:43.841Z",
+    "updatedAt": "2025-06-01T14:09:43.841Z"
+  },
+  {
+    "candidateId": "candidate-1748787232087",
+    "jobId": "job-001",
+    "submittedAt": "2025-06-01T14:13:52.088Z",
+    "status": "screening_completed",
+    "currentStep": "screening_call_completed",
+    "timeline": [
+      {
+        "step": "application_submitted",
+        "status": "completed",
+        "timestamp": "2025-06-01T14:13:52.088Z",
+        "notes": "Application submitted",
+        "performedBy": "candidate"
+      },
+      {
+        "step": "screening_call_completed",
+        "status": "completed",
+        "timestamp": "2025-06-01T14:15:55.669Z",
+        "notes": "AI screening completed successfully",
+        "completedBy": "system",
+        "performedBy": "system"
+      }
+    ],
+    "feedback": {},
+    "id": "app-1748787232088",
+    "createdAt": "2025-06-01T14:13:52.088Z",
+    "updatedAt": "2025-06-01T14:15:55.669Z"
   }
 ]

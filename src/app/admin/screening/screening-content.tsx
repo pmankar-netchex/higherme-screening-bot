@@ -54,7 +54,7 @@ export default function ScreeningContent() {
   const loadConfig = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/admin/screening/config');
+      const response = await fetch('/api/admin/screening');
       
       if (response.ok) {
         const configData = await response.json();
@@ -79,8 +79,8 @@ export default function ScreeningContent() {
     if (!config) return;
     
     try {
-      const response = await fetch('/api/admin/screening/config', {
-        method: 'POST',
+      const response = await fetch('/api/admin/screening', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },

@@ -23,6 +23,8 @@ export interface VapiConfig {
   };
   conversationTone: string;
   maxCallDuration: number;
+  customSystemPrompt?: string;
+  customAnalysisPrompt?: string;
 }
 
 // Default Vapi configuration based on settings in config.json
@@ -94,13 +96,59 @@ export function getConversationTone(): string {
   return DEFAULT_VAPI_CONFIG.conversationTone;
 }
 
+// Get custom system prompt from config, with fallback
+export function getCustomSystemPrompt(): string | undefined {
+  try {
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      if (config.vapiSettings && config.vapiSettings.customSystemPrompt) {
+        return config.vapiSettings.customSystemPrompt;
+      }
+    }
+  } catch (error) {
+    console.error('Error reading custom system prompt from config:', error);
+  }
+  return undefined;
+}
+
+// Get custom analysis prompt from config, with fallback
+export function getCustomAnalysisPrompt(): string | undefined {
+  try {
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      if (config.vapiSettings && config.vapiSettings.customAnalysisPrompt) {
+        return config.vapiSettings.customAnalysisPrompt;
+      }
+    }
+  } catch (error) {
+    console.error('Error reading custom analysis prompt from config:', error);
+  }
+  return undefined;
+}
+
 // Generate the system prompt for the AI assistant based on job role and configuration
 export function generateScreeningSystemPrompt(
   jobTitle: string, 
   roleType: ScreeningRole,
   roleSpecificQuestions: string[],
-  conversationTone: string = getConversationTone()
+  conversationTone: string = getConversationTone(),
+  customSystemPrompt?: string
 ): string {
+  // Use custom prompt if provided, otherwise get from config, otherwise use default
+  const customPrompt = customSystemPrompt || getCustomSystemPrompt();
+  
+  // If custom system prompt is provided, use it with variable substitution
+  if (customPrompt) {
+    return customPrompt
+      .replace(/\{jobTitle\}/g, jobTitle)
+      .replace(/\{roleType\}/g, roleType)
+      .replace(/\{conversationTone\}/g, conversationTone)
+      .replace(/\{roleSpecificQuestions\}/g, roleSpecificQuestions.join('\n- '));
+  }
+
+  // Default system prompt
   return `You are an AI assistant conducting a screening interview for a ${jobTitle} position at a restaurant. 
 Your goal is to assess the candidate's experience, availability, and fit for the role in a ${conversationTone} manner.
 
@@ -200,7 +248,9 @@ export function getVapiSettings(): VapiConfig {
           model: config.vapiSettings.model || DEFAULT_VAPI_CONFIG.model,
           transcriber: config.vapiSettings.transcriber || DEFAULT_VAPI_CONFIG.transcriber,
           conversationTone: config.vapiSettings.conversationTone || DEFAULT_VAPI_CONFIG.conversationTone,
-          maxCallDuration: config.vapiSettings.maxCallDuration || DEFAULT_VAPI_CONFIG.maxCallDuration
+          maxCallDuration: config.vapiSettings.maxCallDuration || DEFAULT_VAPI_CONFIG.maxCallDuration,
+          customSystemPrompt: config.vapiSettings.customSystemPrompt,
+          customAnalysisPrompt: config.vapiSettings.customAnalysisPrompt
         };
       }
     }
@@ -224,8 +274,20 @@ export function createScreeningAssistantOptions(
     jobTitle,
     roleType,
     roleSpecificQuestions,
-    config.conversationTone
+    config.conversationTone,
+    config.customSystemPrompt
   );
+
+  // Get analysis prompt - use custom if available, otherwise default
+  const analysisPrompt = config.customAnalysisPrompt || getCustomAnalysisPrompt() ||
+    `Analyze this ${jobTitle} screening call and provide a structured summary including:
+    1. Candidate's relevant experience
+    2. Availability (shifts, weekends, transportation)
+    3. Key responses to role-specific questions
+    4. Overall assessment of communication skills
+    5. Any concerns or red flags
+    
+    Format the response as a clear, professional summary for hiring managers.`;
 
   // Use simplified configuration pattern similar to working vapi-react-demo
   // This prevents undefined URL requests that cause /_next/undefined 404 errors
@@ -250,6 +312,10 @@ export function createScreeningAssistantOptions(
           content: systemPrompt,
         }
       ],
+    },
+    // Configure analysis plan to generate call summary
+    analysisPlan: {
+      summaryPrompt: analysisPrompt,
     },
     // Call ending configuration
     silenceTimeoutSeconds: 15, // End call after 15 seconds of silence

@@ -55,30 +55,43 @@ export async function POST(request: NextRequest) {
 }
 
 // PUT /api/admin/screening
-// Updates settings (voice settings, mandatory questions, or conversation tone)
+// Updates settings (voice settings, mandatory questions, or full configuration)
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
     const config = readConfigFile();
     let message = 'Settings updated successfully';
     
-    // Update Vapi Settings if provided
-    if (body.vapiSettings) {
-      config.vapiSettings = {
-        ...config.vapiSettings,
-        ...body.vapiSettings
+    // If the body contains the full configuration structure, update the entire config
+    if (body.roles && body.mandatoryQuestions && body.vapiSettings) {
+      // Full configuration update
+      const updatedConfig = {
+        ...config,
+        ...body
       };
-      message = 'Voice settings updated successfully';
+      writeConfigFile(updatedConfig);
+      message = 'Full configuration updated successfully';
+    } else {
+      // Partial updates (backwards compatibility)
+      
+      // Update Vapi Settings if provided
+      if (body.vapiSettings) {
+        config.vapiSettings = {
+          ...config.vapiSettings,
+          ...body.vapiSettings
+        };
+        message = 'Voice settings updated successfully';
+      }
+      
+      // Update mandatory questions if provided
+      if (Array.isArray(body.mandatoryQuestions)) {
+        config.mandatoryQuestions = body.mandatoryQuestions;
+        message = 'Mandatory questions updated successfully';
+      }
+      
+      // Save the updated configuration
+      writeConfigFile(config);
     }
-    
-    // Update mandatory questions if provided
-    if (Array.isArray(body.mandatoryQuestions)) {
-      config.mandatoryQuestions = body.mandatoryQuestions;
-      message = 'Mandatory questions updated successfully';
-    }
-    
-    // Save the updated configuration
-    writeConfigFile(config);
     
     return NextResponse.json({ success: true, message });
   } catch (error) {

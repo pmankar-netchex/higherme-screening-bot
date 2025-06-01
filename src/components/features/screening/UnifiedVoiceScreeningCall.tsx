@@ -123,6 +123,7 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
   const [dataRetrievalProgress, setDataRetrievalProgress] = useState<string>('');
   const [processingCall, setProcessingCall] = useState<boolean>(false);
   const [callAttempts, setCallAttempts] = useState<number>(0);
+  const [startingCall, setStartingCall] = useState<boolean>(false);
   
   // UI state
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
@@ -282,6 +283,7 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
       console.log('Call started', callInfo);
       setStatus('Call active');
       setCallActive(true);
+      setStartingCall(false); // Reset starting state when call is actually active
       setErrorMessage('');
       
       // Store call ID if available and we don't already have one
@@ -336,6 +338,7 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
       console.log('Call ended event received');
       setStatus('Call ended');
       setCallActive(false);
+      setStartingCall(false); // Reset starting state when call ends
       setProcessingCall(true);
       
       // Clear timers
@@ -401,6 +404,7 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
       setErrorMessage(errorMsg);
       setStatus('error');
       setCallActive(false);
+      setStartingCall(false); // Reset starting state on error
       
       if (onCallError) onCallError(new Error(errorMsg));
       
@@ -535,9 +539,12 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
   
   // Start call with assistant options
   const startCall = useCallback(async () => {
-    if (!vapi || callActive) return;
+    if (!vapi || callActive || startingCall) return;
     
     try {
+      setStartingCall(true);
+      setErrorMessage('');
+      setStatus('Starting call...');
       setCallAttempts(prev => prev + 1);
       
       // Create assistant options based on job role
@@ -562,12 +569,18 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
         setCallData(prev => ({ ...prev, callId: callResult.id }));
         console.log('Call ID captured from start result:', callResult.id);
       }
+      
+      // Reset starting state once call is initiated
+      setStartingCall(false);
+      setStatus('Call initiated');
     } catch (error) {
       console.error('Failed to start call:', error);
+      setStartingCall(false);
       setErrorMessage(error instanceof Error ? error.message : 'Failed to start call');
+      setStatus('error');
       if (onCallError) onCallError(error instanceof Error ? error : new Error('Failed to start call'));
     }
-  }, [vapi, callActive, screeningRole, candidate, job, showDebugInfo, onCallError]);
+  }, [vapi, callActive, startingCall, screeningRole, candidate, job, showDebugInfo, onCallError]);
   
   // Stop active call
   const stopCall = useCallback(() => {
@@ -910,7 +923,7 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-medium">Voice Screening Call</h3>
         <div className="text-sm text-gray-500">
-          Status: {callActive ? 'Active Call' : status}
+          Status: {startingCall ? 'Starting call...' : callActive ? 'Active Call' : status}
           {callActive && callDuration > 0 && ` (${callDuration}s)`}
         </div>
       </div>
@@ -920,10 +933,16 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
         {!callActive && !processingCall && (
           <button 
             onClick={startCall} 
-            disabled={isLoading || callActive || processingCall}
-            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isLoading || callActive || processingCall || startingCall}
+            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
-            Start Screening Call
+            {startingCall && (
+              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            )}
+            {startingCall ? 'Starting Call...' : 'Start Screening Call'}
           </button>
         )}
         
@@ -936,6 +955,20 @@ const UnifiedVoiceScreeningCall: React.FC<UnifiedVoiceScreeningCallProps> = ({
           </button>
         )}
       </div>
+      
+      {/* Starting call progress indicator */}
+      {startingCall && (
+        <div className="text-center">
+          <div className="flex justify-center items-center gap-2 text-blue-600">
+            <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span className="text-sm">Initializing call connection...</span>
+          </div>
+          <p className="text-xs text-gray-500 mt-1">Please wait while we establish the connection</p>
+        </div>
+      )}
       
       {/* UI feedback for active call */}
       {callActive && (

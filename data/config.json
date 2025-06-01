@@ -114,7 +114,9 @@
       "language": "en-US"
     },
     "conversationTone": "friendly and professional",
-    "maxCallDuration": 300
+    "maxCallDuration": 300,
+    "customSystemPrompt": null,
+    "customAnalysisPrompt": null
   },
   "applicationSettings": {
     "maxResumeSize": "5MB",

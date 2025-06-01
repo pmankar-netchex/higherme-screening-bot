@@ -114,6 +114,57 @@
       "callDuration": 0,
       "evaluations": {
         "experience": {
+          "score": "Poor",
+          "notes": "No prior line cook or kitchen experience. Expressed enthusiasm for learning cooking techniques. No specific skills related to cooking or kitchen work mentioned."
+        },
+        "availability": {
+          "morningShift": true,
+          "eveningShift": false,
+          "weekendAvailable": true,
+          "transportation": true,
+          "notes": "Available only for morning shifts. Willing to work weekends. Has personal vehicle for transportation to work."
+        },
+        "softSkills": {
+          "score": "Good",
+          "notes": "Provided brief, direct responses. Communication was clear but minimal. Engaged positively with questions despite limited experience."
+        }
+      },
+      "roleSpecificAnswers": {
+        "Role-specific evaluation": "Stated interest in learning cooking techniques. Expressed willingness to work in a fast-paced kitchen environment. Mentioned they 'haven't been looking for a while' when asked about cooking skills."
+      },
+      "overallSummary": "Candidate shows enthusiasm for learning but lacks any relevant line cook experience. Available for morning shifts and weekends with reliable transportation. Would require complete training from the ground up.",
+      "recommendedNextSteps": "Consider only if willing to invest in training a complete beginner",
+      "completedAt": "2025-06-01T10:40:07.557Z",
+      "overallScore": 5.5,
+      "recommendation": "maybe",
+      "aiSummary": "{\"experience\":{\"evaluation\":\"No prior line cook or kitchen experience\",\"highlights\":[\"Expressed enthusiasm for learning\"]},\"availability\":{\"morning\":true,\"evening\":false,\"weekends\":true,\"notes\":\"Available only for morning shifts. Willing to work weekends. Has personal vehicle for transportation to work.\"},\"transportation\":{\"hasReliableTransportation\":true,\"notes\":\"Has personal vehicle\"},\"softSkills\":{\"evaluation\":\"Clear communication but minimal responses\",\"highlights\":[\"Engaged positively\",\"Direct communication\"]},\"roleSpecific\":{\"evaluation\":\"Interest in learning cooking techniques\",\"strengths\":[\"Enthusiasm to learn\",\"Willing to work fast-paced environment\"],\"areas_of_improvement\":[\"No relevant experience\",\"Needs complete training\"]}}",
+      "strengths": [
+        "Available for morning shifts",
+        "Willing to work weekends",
+        "Has reliable transportation",
+        "Enthusiasm to learn"
+      ],
+      "concerns": [
+        "No relevant experience",
+        "Limited to morning shifts only",
+        "Would require extensive training"
+      ]
+    },
+    "screeningId": "screening_1748774298808"
+  },
+  {
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "testuser@gmail.com",
+    "phone": "12345678900",
+    "resumeUrl": "/uploads/resumes/temp_1748786807985_1748786808107_QjeGCJLN.pdf",
+    "id": "candidate-1748786808173",
+    "createdAt": "2025-06-01T14:06:48.173Z",
+    "updatedAt": "2025-06-01T14:08:39.660Z",
+    "screeningSummary": {
+      "callDuration": 0,
+      "evaluations": {
+        "experience": {
           "score": "Average",
           "notes": ""
         },
@@ -134,13 +185,65 @@
       },
       "overallSummary": "",
       "recommendedNextSteps": "Review additional qualifications",
-      "completedAt": "2025-06-01T10:40:07.557Z",
+      "completedAt": "2025-06-01T14:08:39.660Z",
       "overallScore": 7.5,
       "recommendation": "maybe",
       "aiSummary": "{\"experience\":{\"evaluation\":\"\",\"highlights\":[]},\"availability\":{\"morning\":false,\"evening\":false,\"weekends\":false,\"notes\":\"\"},\"transportation\":{\"hasReliableTransportation\":false,\"notes\":\"\"},\"softSkills\":{\"evaluation\":\"\",\"highlights\":[]},\"roleSpecific\":{\"evaluation\":\"\",\"strengths\":[],\"areas_of_improvement\":[]}}",
       "strengths": [],
       "concerns": []
     },
-    "screeningId": "screening_1748774298808"
+    "screeningId": "screening_1748786810411"
+  },
+  {
+    "firstName": "zeke",
+    "lastName": "izekiel",
+    "email": "zzaas@aszk.com",
+    "phone": "1234567890",
+    "resumeUrl": "/uploads/resumes/temp_1748786983588_1748786983754_QjeGCJLN.pdf",
+    "id": "candidate-1748786983840",
+    "createdAt": "2025-06-01T14:09:43.840Z",
+    "updatedAt": "2025-06-01T14:09:43.840Z"
+  },
+  {
+    "firstName": "Sarah",
+    "lastName": "Seraphim",
+    "email": "ssassphm@qwerty.com",
+    "phone": "111222334455",
+    "resumeUrl": "/uploads/resumes/temp_1748787231885_1748787232038_iQTLSNYl.pdf",
+    "id": "candidate-1748787232087",
+    "createdAt": "2025-06-01T14:13:52.087Z",
+    "updatedAt": "2025-06-01T14:15:55.669Z",
+    "screeningSummary": {
+      "callDuration": 0,
+      "evaluations": {
+        "experience": {
+          "score": "Average",
+          "notes": ""
+        },
+        "availability": {
+          "morningShift": false,
+          "eveningShift": false,
+          "weekendAvailable": false,
+          "transportation": false,
+          "notes": ""
+        },
+        "softSkills": {
+          "score": "Average",
+          "notes": ""
+        }
+      },
+      "roleSpecificAnswers": {
+        "Role-specific evaluation": ""
+      },
+      "overallSummary": "",
+      "recommendedNextSteps": "Review additional qualifications",
+      "completedAt": "2025-06-01T14:15:55.668Z",
+      "overallScore": 7.5,
+      "recommendation": "maybe",
+      "aiSummary": "{\"experience\":{\"evaluation\":\"\",\"highlights\":[]},\"availability\":{\"morning\":false,\"evening\":false,\"weekends\":false,\"notes\":\"\"},\"transportation\":{\"hasReliableTransportation\":false,\"notes\":\"\"},\"softSkills\":{\"evaluation\":\"\",\"highlights\":[]},\"roleSpecific\":{\"evaluation\":\"\",\"strengths\":[],\"areas_of_improvement\":[]}}",
+      "strengths": [],
+      "concerns": []
+    },
+    "screeningId": "screening_1748787235076"
   }
 ]

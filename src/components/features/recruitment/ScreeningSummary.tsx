@@ -13,6 +13,45 @@ interface ScreeningSummaryProps {
 export default function ScreeningSummary({ screeningSummary, candidateId, onRefreshScreening, refreshing = false }: ScreeningSummaryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // Helper to parse availability from overall summary text as fallback
+  const parseAvailabilityFromText = (text: string) => {
+    if (!text) return null;
+    
+    const lowerText = text.toLowerCase();
+    return {
+      morningShift: lowerText.includes('morning') && !lowerText.includes('not available morning'),
+      eveningShift: lowerText.includes('evening') && !lowerText.includes('not available evening'),
+      weekendAvailable: lowerText.includes('weekend') && !lowerText.includes('not available weekend'),
+      transportation: lowerText.includes('vehicle') || lowerText.includes('transportation') || lowerText.includes('own car')
+    };
+  };
+
+  // Get availability data with fallback parsing
+  const getAvailabilityData = () => {
+    const structuredAvailability = screeningSummary.evaluations?.availability;
+    
+    // If structured data exists and has at least one true value, use it
+    if (structuredAvailability && 
+        (structuredAvailability.morningShift || 
+         structuredAvailability.eveningShift || 
+         structuredAvailability.weekendAvailable || 
+         structuredAvailability.transportation)) {
+      return structuredAvailability;
+    }
+    
+    // Otherwise, try to parse from text summary as fallback
+    const parsedFromText = parseAvailabilityFromText(screeningSummary.overallSummary);
+    if (parsedFromText) {
+      return {
+        ...structuredAvailability,
+        ...parsedFromText,
+        notes: structuredAvailability?.notes || 'Parsed from summary text'
+      };
+    }
+    
+    return structuredAvailability;
+  };
+
   // Helper to render appropriate badge color based on score
   const getScoreColor = (score: string) => {
     switch (score) {
@@ -26,6 +65,8 @@ export default function ScreeningSummary({ screeningSummary, candidateId, onRefr
         return 'bg-red-100 text-red-800';
     }
   };
+
+  const availabilityData = getAvailabilityData();
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -92,34 +133,34 @@ export default function ScreeningSummary({ screeningSummary, candidateId, onRefr
           </div>
         ) : null}
         
-        {screeningSummary.evaluations && screeningSummary.evaluations.availability ? (
+        {availabilityData ? (
           <div className="border rounded-lg p-4 mb-4">
             <h4 className="font-medium mb-2">Availability</h4>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-sm">
                   <span className="font-medium">Morning Shift:</span> {' '}
-                  {screeningSummary.evaluations.availability.morningShift ? '✅ Available' : '❌ Unavailable'}
+                  {availabilityData.morningShift ? '✅ Available' : '❌ Unavailable'}
                 </p>
                 <p className="text-sm">
                   <span className="font-medium">Evening Shift:</span> {' '}
-                  {screeningSummary.evaluations.availability.eveningShift ? '✅ Available' : '❌ Unavailable'}
+                  {availabilityData.eveningShift ? '✅ Available' : '❌ Unavailable'}
                 </p>
               </div>
               <div>
                 <p className="text-sm">
                   <span className="font-medium">Weekends:</span> {' '}
-                  {screeningSummary.evaluations.availability.weekendAvailable ? '✅ Available' : '❌ Unavailable'}
+                  {availabilityData.weekendAvailable ? '✅ Available' : '❌ Unavailable'}
                 </p>
                 <p className="text-sm">
                   <span className="font-medium">Transportation:</span> {' '}
-                  {screeningSummary.evaluations.availability.transportation ? '✅ Available' : '❌ Unavailable'}
+                  {availabilityData.transportation ? '✅ Available' : '❌ Unavailable'}
                 </p>
               </div>
             </div>
-            {screeningSummary.evaluations.availability.notes && (
+            {availabilityData.notes && (
               <div className="mt-2 text-sm text-gray-700">
-                <p>{screeningSummary.evaluations.availability.notes}</p>
+                <p>{availabilityData.notes}</p>
               </div>
             )}
           </div>
