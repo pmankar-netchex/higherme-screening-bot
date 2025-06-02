@@ -62,6 +62,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ candidate, application });
   } catch (error) {
     console.error('Error creating candidate:', error);
+    
+    // Handle specific error cases
+    if (error instanceof Error) {
+      if (error.message === 'Candidate with this email already exists') {
+        return NextResponse.json(
+          { error: 'A candidate with this email address already exists. Please use a different email or contact support if this is an error.' },
+          { status: 409 } // Conflict status code
+        );
+      }
+    }
+    
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

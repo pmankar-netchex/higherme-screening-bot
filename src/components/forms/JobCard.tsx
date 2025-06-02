@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Job } from '../../lib/shared/types';
+import { Job } from '../../lib/types';
 
 interface JobCardProps {
   job: Job;

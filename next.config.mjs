@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove the static export, which is causing issues with dynamic routes
-  // output: 'export',
+  // Enable standalone output for Docker deployment
+  output: 'standalone',
   distDir: 'dist',
   // Add the following to ignore build errors related to useSearchParams
   typescript: {

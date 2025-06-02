@@ -6,7 +6,7 @@ dist/
 build/
 .github/
 .vscode/
-.env
+
 # Ignore test coverage reports
 coverage/
 public/

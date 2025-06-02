@@ -1,254 +1,58 @@
 [
   {
-    "candidateId": "candidate-1748765420949",
+    "candidateId": "candidate-1748898653079",
     "jobId": "job-001",
-    "submittedAt": "2025-06-01T08:10:20.949Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
+    "submittedAt": "2025-06-02T21:10:53.082Z",
+    "status": "screening_completed",
+    "currentStep": "screening_call_completed",
     "timeline": [
       {
         "step": "application_submitted",
         "status": "completed",
-        "timestamp": "2025-06-01T08:10:20.949Z",
+        "timestamp": "2025-06-02T21:10:53.082Z",
         "notes": "Application submitted",
         "performedBy": "candidate"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748765420949",
-    "createdAt": "2025-06-01T08:10:20.949Z",
-    "updatedAt": "2025-06-01T08:10:20.949Z"
-  },
-  {
-    "candidateId": "candidate-1748766532259",
-    "jobId": "job-001",
-    "submittedAt": "2025-06-01T08:28:52.260Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
-    "timeline": [
+      },
       {
-        "step": "application_submitted",
+        "step": "screening_call_completed",
         "status": "completed",
-        "timestamp": "2025-06-01T08:28:52.260Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
+        "timestamp": "2025-06-02T21:12:41.879Z",
+        "notes": "AI screening completed successfully",
+        "completedBy": "system",
+        "performedBy": "system"
       }
     ],
     "feedback": {},
-    "id": "app-1748766532260",
-    "createdAt": "2025-06-01T08:28:52.260Z",
-    "updatedAt": "2025-06-01T08:28:52.260Z"
+    "id": "app-1748898653089",
+    "createdAt": "2025-06-02T21:10:53.090Z",
+    "updatedAt": "2025-06-02T21:12:41.879Z"
   },
   {
-    "candidateId": "candidate-1748768356187",
-    "jobId": "job-002",
-    "submittedAt": "2025-06-01T08:59:16.188Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T08:59:16.188Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748768356188",
-    "createdAt": "2025-06-01T08:59:16.188Z",
-    "updatedAt": "2025-06-01T08:59:16.188Z"
-  },
-  {
-    "candidateId": "candidate-1748770472406",
-    "jobId": "job-002",
-    "submittedAt": "2025-06-01T09:34:32.407Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T09:34:32.407Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748770472407",
-    "createdAt": "2025-06-01T09:34:32.407Z",
-    "updatedAt": "2025-06-01T09:34:32.407Z"
-  },
-  {
-    "candidateId": "candidate-1748770852209",
-    "jobId": "job-002",
-    "submittedAt": "2025-06-01T09:40:52.209Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T09:40:52.209Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748770852210",
-    "createdAt": "2025-06-01T09:40:52.210Z",
-    "updatedAt": "2025-06-01T09:40:52.210Z"
-  },
-  {
-    "candidateId": "candidate-1748772074280",
+    "candidateId": "candidate-1748899661884",
     "jobId": "job-003",
-    "submittedAt": "2025-06-01T10:01:14.281Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T10:01:14.281Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748772074281",
-    "createdAt": "2025-06-01T10:01:14.281Z",
-    "updatedAt": "2025-06-01T10:01:14.281Z"
-  },
-  {
-    "candidateId": "candidate-1748773503947",
-    "jobId": "job-002",
-    "submittedAt": "2025-06-01T10:25:03.948Z",
+    "submittedAt": "2025-06-02T21:27:41.886Z",
     "status": "screening_completed",
     "currentStep": "screening_call_completed",
     "timeline": [
       {
         "step": "application_submitted",
         "status": "completed",
-        "timestamp": "2025-06-01T10:25:03.948Z",
+        "timestamp": "2025-06-02T21:27:41.886Z",
         "notes": "Application submitted",
         "performedBy": "candidate"
       },
       {
         "step": "screening_call_completed",
         "status": "completed",
-        "timestamp": "2025-06-01T10:26:37.616Z",
+        "timestamp": "2025-06-02T21:29:21.724Z",
         "notes": "AI screening completed successfully",
         "completedBy": "system",
         "performedBy": "system"
       }
     ],
     "feedback": {},
-    "id": "app-1748773503948",
-    "createdAt": "2025-06-01T10:25:03.948Z",
-    "updatedAt": "2025-06-01T10:26:37.616Z"
-  },
-  {
-    "candidateId": "candidate-1748774296431",
-    "jobId": "job-002",
-    "submittedAt": "2025-06-01T10:38:16.432Z",
-    "status": "screening_completed",
-    "currentStep": "screening_call_completed",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T10:38:16.432Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      },
-      {
-        "step": "screening_call_completed",
-        "status": "completed",
-        "timestamp": "2025-06-01T10:40:07.558Z",
-        "notes": "AI screening completed successfully",
-        "completedBy": "system",
-        "performedBy": "system"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748774296432",
-    "createdAt": "2025-06-01T10:38:16.432Z",
-    "updatedAt": "2025-06-01T10:40:07.558Z"
-  },
-  {
-    "candidateId": "candidate-1748786808173",
-    "jobId": "job-003",
-    "submittedAt": "2025-06-01T14:06:48.175Z",
-    "status": "screening_completed",
-    "currentStep": "screening_call_completed",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T14:06:48.175Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      },
-      {
-        "step": "screening_call_completed",
-        "status": "completed",
-        "timestamp": "2025-06-01T14:08:39.660Z",
-        "notes": "AI screening completed successfully",
-        "completedBy": "system",
-        "performedBy": "system"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748786808175",
-    "createdAt": "2025-06-01T14:06:48.175Z",
-    "updatedAt": "2025-06-01T14:08:39.660Z"
-  },
-  {
-    "candidateId": "candidate-1748786983840",
-    "jobId": "job-002",
-    "submittedAt": "2025-06-01T14:09:43.840Z",
-    "status": "submitted",
-    "currentStep": "application_submitted",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T14:09:43.841Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748786983841",
-    "createdAt": "2025-06-01T14:09:43.841Z",
-    "updatedAt": "2025-06-01T14:09:43.841Z"
-  },
-  {
-    "candidateId": "candidate-1748787232087",
-    "jobId": "job-001",
-    "submittedAt": "2025-06-01T14:13:52.088Z",
-    "status": "screening_completed",
-    "currentStep": "screening_call_completed",
-    "timeline": [
-      {
-        "step": "application_submitted",
-        "status": "completed",
-        "timestamp": "2025-06-01T14:13:52.088Z",
-        "notes": "Application submitted",
-        "performedBy": "candidate"
-      },
-      {
-        "step": "screening_call_completed",
-        "status": "completed",
-        "timestamp": "2025-06-01T14:15:55.669Z",
-        "notes": "AI screening completed successfully",
-        "completedBy": "system",
-        "performedBy": "system"
-      }
-    ],
-    "feedback": {},
-    "id": "app-1748787232088",
-    "createdAt": "2025-06-01T14:13:52.088Z",
-    "updatedAt": "2025-06-01T14:15:55.669Z"
+    "id": "app-1748899661887",
+    "createdAt": "2025-06-02T21:27:41.887Z",
+    "updatedAt": "2025-06-02T21:29:21.724Z"
   }
 ]

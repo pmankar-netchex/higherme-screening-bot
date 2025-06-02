@@ -442,6 +442,18 @@ npm run build
 npm run start
 ```
 
+### Docker Deployment (Recommended)
+```bash
+# Quick start with Docker Compose
+docker-compose up --build -d
+
+# Or with Docker directly
+docker build -t recruitment-app .
+docker run -d -p 3000:3000 --env-file .env.local recruitment-app
+```
+
+See `DOCKER_SIMPLE.md` for complete Docker instructions.
+
 ### Production Considerations
 - **Environment Variables**: Secure configuration management
 - **File Storage**: Consider cloud storage for production (AWS S3, Google Cloud Storage)

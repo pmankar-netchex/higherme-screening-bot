@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     console.log('FormData received, keys:', Array.from(formData.keys()));
     
-    const file = formData.get('resume');
+    const file = formData.get('resume') as File | null;
     const candidateId = formData.get('candidateId') as string;
     
     console.log('FormData values:', { 
@@ -41,7 +41,9 @@ export async function POST(request: NextRequest) {
     }
     
     // Make sure it's actually a File object
-    if (!(file instanceof File)) {
+    // In Node.js environment (Docker), File might not be available as a constructor
+    // but the object should still have the file properties
+    if (typeof file === 'string' || !file || typeof file.arrayBuffer !== 'function') {
       console.error('Invalid file object type:', typeof file);
       return NextResponse.json(
         { error: 'Invalid file object received' },

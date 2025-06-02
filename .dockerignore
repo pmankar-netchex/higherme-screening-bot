@@ -1,0 +1,111 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output
+.next
+dist
+out
+
+# Production build files
+build
+
+# Environment variables (Note: .env is explicitly copied in Dockerfile)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file (Note: .env is needed for Docker build)
+# .env - commented out to allow Docker build to access environment variables
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+CHANGELOG.md
+LICENSE
+
+# Testing
+coverage
+.nyc_output
+test
+
+# Temporary files
+tmp
+temp
+*.tmp
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.yaml
+DOCKER_SIMPLE.md
+
+# Development tools
+.eslintrc.json
+.prettierrc
+.prettierignore
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Workspace files
+*.code-workspace
+
+# Task files
+tasks/
+
+# Large uploaded files (will be mounted as volume in production)
+public/uploads/resumes/*.pdf

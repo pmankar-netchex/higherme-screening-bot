@@ -1,24 +1,124 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getAllJobs } from '../../lib/servers/jobs-server';
-import { getAllApplications } from '../../lib/servers/applications-server';
-import { getAllCandidates } from '../../lib/servers/candidates-server';
 
-export default async function AdminPanel() {
-  const jobs = getAllJobs();
-  const applications = getAllApplications();
-  const candidates = getAllCandidates();
+interface AdminStats {
+  totalJobs: number;
+  activeJobs: number;
+  totalCandidates: number;
+  totalApplications: number;
+  pendingReview: number;
+  completedScreenings: number;
+}
 
-  // System statistics
-  const stats = {
-    totalJobs: jobs.length,
-    activeJobs: jobs.filter(job => job.status === 'active').length,
-    totalCandidates: candidates.length,
-    totalApplications: applications.length,
-    pendingReview: applications.filter(app => app.status === 'under_review').length,
-    completedScreenings: applications.filter(app => 
-      app.status === 'screening_completed' || app.currentStep === 'recruiter_review'
-    ).length
-  };
+export default function AdminPanel() {
+  const [stats, setStats] = useState<AdminStats>({
+    totalJobs: 0,
+    activeJobs: 0,
+    totalCandidates: 0,
+    totalApplications: 0,
+    pendingReview: 0,
+    completedScreenings: 0
+  });
+  const [applications, setApplications] = useState<any[]>([]);
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        
+        const [jobsResponse, applicationsResponse, candidatesResponse] = await Promise.all([
+          fetch('/api/jobs'),
+          fetch('/api/applications'),
+          fetch('/api/candidates')
+        ]);
+
+        if (!jobsResponse.ok || !applicationsResponse.ok || !candidatesResponse.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const [jobsData, applicationsData, candidatesData] = await Promise.all([
+          jobsResponse.json(),
+          applicationsResponse.json(),
+          candidatesResponse.json()
+        ]);
+
+        const jobs = jobsData.jobs || [];
+        const applications = applicationsData.applications || [];
+        const candidates = candidatesData.candidates || [];
+
+        // Store for later use in Recent Activity
+        setJobs(jobs);
+        setApplications(applications);
+
+        // Calculate statistics
+        const calculatedStats = {
+          totalJobs: jobs.length,
+          activeJobs: jobs.filter((job: any) => job.status === 'active').length,
+          totalCandidates: candidates.length,
+          totalApplications: applications.length,
+          pendingReview: applications.filter((app: any) => app.status === 'under_review').length,
+          completedScreenings: applications.filter((app: any) => 
+            app.status === 'screening_completed' || app.currentStep === 'recruiter_review'
+          ).length
+        };
+
+        setStats(calculatedStats);
+      } catch (err) {
+        setError('Failed to load admin data');
+        console.error('Error fetching admin data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <Link href="/" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
+              ← Back to Home
+            </Link>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Admin Panel
+            </h1>
+          </div>
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <span className="ml-2 text-gray-600">Loading admin dashboard...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <Link href="/" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
+              ← Back to Home
+            </Link>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Admin Panel
+            </h1>
+          </div>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+            <p className="text-red-600">{error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">

@@ -1,18 +1,78 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { applicationService } from '../../lib/services/application-service';
-import { candidateService } from '../../lib/services/candidate-service';
-import { getAllJobs } from '../../lib/servers/jobs-server';
 import JobApplicantsOverview from '../../components/features/recruitment/JobApplicantsOverview';
 import ApplicantList from '../../components/features/recruitment/ApplicantList';
 import CandidateStatusTracker from '../../components/features/recruitment/CandidateStatusTracker';
 import ExportData from '../../components/features/recruitment/ExportData';
-import { JobApplication, Candidate } from '../../lib/types';
+import { JobApplication, Candidate, Job } from '../../lib/types';
 import { getStatusDisplayInfo, getStatusBadgeClasses } from '../../lib/utils/statusManager';
 
-export default async function RecruiterDashboard() {
-  const applications = await applicationService.getAllApplications();
-  const candidates = await candidateService.getAllCandidates();
-  const jobs = getAllJobs();
+export default function RecruiterDashboard() {
+  const [applications, setApplications] = useState<JobApplication[]>([]);
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const [applicationsRes, candidatesRes, jobsRes] = await Promise.all([
+          fetch('/api/applications'),
+          fetch('/api/candidates'),
+          fetch('/api/jobs')
+        ]);
+
+        const [applicationsData, candidatesData, jobsData] = await Promise.all([
+          applicationsRes.json(),
+          candidatesRes.json(),
+          jobsRes.json()
+        ]);
+
+        setApplications(applicationsData.applications || applicationsData);
+        setCandidates(candidatesData);
+        setJobs(jobsData);
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <Link href="/" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
+              ← Back to Home
+            </Link>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Recruiter Dashboard
+            </h1>
+            <p className="text-gray-600">
+              Loading dashboard data...
+            </p>
+          </div>
+          <div className="animate-pulse">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="bg-white rounded-lg shadow-md p-6">
+                  <div className="h-16 bg-gray-200 rounded"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Dashboard statistics
   const stats = {

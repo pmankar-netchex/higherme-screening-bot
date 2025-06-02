@@ -19,6 +19,21 @@ export {
   type EnhancedScreeningSummary
 } from './services/enhancedScreeningService';
 
+// Export unified Vapi configuration functions (client/server compatible)
+export {
+  createScreeningAssistantOptions,
+  generateScreeningSystemPrompt,
+  getRoleSpecificQuestions,
+  getMandatoryQuestions,
+  getConversationTone,
+  getCustomSystemPrompt,
+  getCustomAnalysisPrompt,
+  getVapiSettings,
+  DEFAULT_VAPI_CONFIG,
+  MANDATORY_QUESTIONS,
+  type VapiConfig
+} from './integrations/vapi/vapiConfig';
+
 // Export call data services
 export {
   getCallData,

@@ -1,73 +1,13 @@
 [
   {
-    "firstName": "ask",
-    "lastName": "juggle",
-    "email": "aj@killgtous.com",
-    "phone": "1234567890",
-    "resumeUrl": "/uploads/resumes/temp_1748765420766_1748765420882_QWSzJtQX.pdf",
-    "id": "candidate-1748765420949",
-    "createdAt": "2025-06-01T08:10:20.949Z",
-    "updatedAt": "2025-06-01T08:10:20.949Z"
-  },
-  {
     "firstName": "Sarah",
     "lastName": "Seraphim",
-    "email": "ssaphm@qwerty.com",
+    "email": "ssphm@qwerty.com",
     "phone": "111222334455",
-    "resumeUrl": "/uploads/resumes/temp_1748766532007_1748766532248_QjeGCJLN.pdf",
-    "id": "candidate-1748766532259",
-    "createdAt": "2025-06-01T08:28:52.259Z",
-    "updatedAt": "2025-06-01T08:28:52.259Z"
-  },
-  {
-    "firstName": "Sarah",
-    "lastName": "Seraphim",
-    "email": "ssaphm@qwertasy.com",
-    "phone": "111222334455",
-    "resumeUrl": "/uploads/resumes/temp_1748768356001_1748768356119_QjeGCJLN.pdf",
-    "id": "candidate-1748768356187",
-    "createdAt": "2025-06-01T08:59:16.187Z",
-    "updatedAt": "2025-06-01T08:59:16.187Z"
-  },
-  {
-    "firstName": "Sarah",
-    "lastName": "Seraphim",
-    "email": "ssaasdphm@qwertasy.com",
-    "phone": "12334575",
-    "resumeUrl": "/uploads/resumes/temp_1748770472330_1748770472395_iQTLSNYl.pdf",
-    "id": "candidate-1748770472406",
-    "createdAt": "2025-06-01T09:34:32.406Z",
-    "updatedAt": "2025-06-01T09:34:32.406Z"
-  },
-  {
-    "firstName": "jeremy",
-    "lastName": "Johntotta-jacobs",
-    "email": "jjjacobs@gmail.co",
-    "phone": "01234567890",
-    "resumeUrl": "/uploads/resumes/temp_1748770852081_1748770852167_iQTLSNYl.pdf",
-    "id": "candidate-1748770852209",
-    "createdAt": "2025-06-01T09:40:52.209Z",
-    "updatedAt": "2025-06-01T09:40:52.209Z"
-  },
-  {
-    "firstName": "joellene",
-    "lastName": "dog",
-    "email": "jd@jd.csomasd",
-    "phone": "01234567890",
-    "resumeUrl": "/uploads/resumes/temp_1748772074043_1748772074180_QjeGCJLN.pdf",
-    "id": "candidate-1748772074280",
-    "createdAt": "2025-06-01T10:01:14.280Z",
-    "updatedAt": "2025-06-01T10:01:14.280Z"
-  },
-  {
-    "firstName": "jeremy",
-    "lastName": "Johntotta-jacobs",
-    "email": "jjjacjobs@gmail.co",
-    "phone": "01234567890",
-    "resumeUrl": "/uploads/resumes/temp_1748773503916_1748773503937_iQTLSNYl.pdf",
-    "id": "candidate-1748773503947",
-    "createdAt": "2025-06-01T10:25:03.947Z",
-    "updatedAt": "2025-06-01T10:26:37.616Z",
+    "resumeUrl": "/uploads/resumes/temp_1748898652949_1748898653041_BicaNJns.pdf",
+    "id": "candidate-1748898653079",
+    "createdAt": "2025-06-02T21:10:53.079Z",
+    "updatedAt": "2025-06-02T21:12:41.877Z",
     "screeningSummary": {
       "callDuration": 0,
       "evaluations": {
@@ -92,75 +32,24 @@
       },
       "overallSummary": "",
       "recommendedNextSteps": "Review additional qualifications",
-      "completedAt": "2025-06-01T10:26:37.615Z",
+      "completedAt": "2025-06-02T21:12:41.877Z",
       "overallScore": 7.5,
       "recommendation": "maybe",
       "aiSummary": "{\"experience\":{\"evaluation\":\"\",\"highlights\":[]},\"availability\":{\"morning\":false,\"evening\":false,\"weekends\":false,\"notes\":\"\"},\"transportation\":{\"hasReliableTransportation\":false,\"notes\":\"\"},\"softSkills\":{\"evaluation\":\"\",\"highlights\":[]},\"roleSpecific\":{\"evaluation\":\"\",\"strengths\":[],\"areas_of_improvement\":[]}}",
       "strengths": [],
       "concerns": []
     },
-    "screeningId": "screening_1748773506541"
+    "screeningId": "screening_1748898654332"
   },
   {
-    "firstName": "well",
-    "lastName": "could",
-    "email": "wellcould@ggm.com",
-    "phone": "12345567899",
-    "resumeUrl": "/uploads/resumes/temp_1748774296263_1748774296423_QjeGCJLN.pdf",
-    "id": "candidate-1748774296431",
-    "createdAt": "2025-06-01T10:38:16.431Z",
-    "updatedAt": "2025-06-01T10:40:07.558Z",
-    "screeningSummary": {
-      "callDuration": 0,
-      "evaluations": {
-        "experience": {
-          "score": "Poor",
-          "notes": "No prior line cook or kitchen experience. Expressed enthusiasm for learning cooking techniques. No specific skills related to cooking or kitchen work mentioned."
-        },
-        "availability": {
-          "morningShift": true,
-          "eveningShift": false,
-          "weekendAvailable": true,
-          "transportation": true,
-          "notes": "Available only for morning shifts. Willing to work weekends. Has personal vehicle for transportation to work."
-        },
-        "softSkills": {
-          "score": "Good",
-          "notes": "Provided brief, direct responses. Communication was clear but minimal. Engaged positively with questions despite limited experience."
-        }
-      },
-      "roleSpecificAnswers": {
-        "Role-specific evaluation": "Stated interest in learning cooking techniques. Expressed willingness to work in a fast-paced kitchen environment. Mentioned they 'haven't been looking for a while' when asked about cooking skills."
-      },
-      "overallSummary": "Candidate shows enthusiasm for learning but lacks any relevant line cook experience. Available for morning shifts and weekends with reliable transportation. Would require complete training from the ground up.",
-      "recommendedNextSteps": "Consider only if willing to invest in training a complete beginner",
-      "completedAt": "2025-06-01T10:40:07.557Z",
-      "overallScore": 5.5,
-      "recommendation": "maybe",
-      "aiSummary": "{\"experience\":{\"evaluation\":\"No prior line cook or kitchen experience\",\"highlights\":[\"Expressed enthusiasm for learning\"]},\"availability\":{\"morning\":true,\"evening\":false,\"weekends\":true,\"notes\":\"Available only for morning shifts. Willing to work weekends. Has personal vehicle for transportation to work.\"},\"transportation\":{\"hasReliableTransportation\":true,\"notes\":\"Has personal vehicle\"},\"softSkills\":{\"evaluation\":\"Clear communication but minimal responses\",\"highlights\":[\"Engaged positively\",\"Direct communication\"]},\"roleSpecific\":{\"evaluation\":\"Interest in learning cooking techniques\",\"strengths\":[\"Enthusiasm to learn\",\"Willing to work fast-paced environment\"],\"areas_of_improvement\":[\"No relevant experience\",\"Needs complete training\"]}}",
-      "strengths": [
-        "Available for morning shifts",
-        "Willing to work weekends",
-        "Has reliable transportation",
-        "Enthusiasm to learn"
-      ],
-      "concerns": [
-        "No relevant experience",
-        "Limited to morning shifts only",
-        "Would require extensive training"
-      ]
-    },
-    "screeningId": "screening_1748774298808"
-  },
-  {
-    "firstName": "Test",
-    "lastName": "User",
-    "email": "testuser@gmail.com",
-    "phone": "12345678900",
-    "resumeUrl": "/uploads/resumes/temp_1748786807985_1748786808107_QjeGCJLN.pdf",
-    "id": "candidate-1748786808173",
-    "createdAt": "2025-06-01T14:06:48.173Z",
-    "updatedAt": "2025-06-01T14:08:39.660Z",
+    "firstName": "Joel",
+    "lastName": "Jansen",
+    "email": "jj@qwerty.com",
+    "phone": "12321213213",
+    "resumeUrl": "/uploads/resumes/temp_1748899661685_1748899661777_iQTLSNYl.pdf",
+    "id": "candidate-1748899661884",
+    "createdAt": "2025-06-02T21:27:41.884Z",
+    "updatedAt": "2025-06-02T21:29:21.723Z",
     "screeningSummary": {
       "callDuration": 0,
       "evaluations": {
@@ -185,65 +74,13 @@
       },
       "overallSummary": "",
       "recommendedNextSteps": "Review additional qualifications",
-      "completedAt": "2025-06-01T14:08:39.660Z",
+      "completedAt": "2025-06-02T21:29:21.722Z",
       "overallScore": 7.5,
       "recommendation": "maybe",
       "aiSummary": "{\"experience\":{\"evaluation\":\"\",\"highlights\":[]},\"availability\":{\"morning\":false,\"evening\":false,\"weekends\":false,\"notes\":\"\"},\"transportation\":{\"hasReliableTransportation\":false,\"notes\":\"\"},\"softSkills\":{\"evaluation\":\"\",\"highlights\":[]},\"roleSpecific\":{\"evaluation\":\"\",\"strengths\":[],\"areas_of_improvement\":[]}}",
       "strengths": [],
       "concerns": []
     },
-    "screeningId": "screening_1748786810411"
-  },
-  {
-    "firstName": "zeke",
-    "lastName": "izekiel",
-    "email": "zzaas@aszk.com",
-    "phone": "1234567890",
-    "resumeUrl": "/uploads/resumes/temp_1748786983588_1748786983754_QjeGCJLN.pdf",
-    "id": "candidate-1748786983840",
-    "createdAt": "2025-06-01T14:09:43.840Z",
-    "updatedAt": "2025-06-01T14:09:43.840Z"
-  },
-  {
-    "firstName": "Sarah",
-    "lastName": "Seraphim",
-    "email": "ssassphm@qwerty.com",
-    "phone": "111222334455",
-    "resumeUrl": "/uploads/resumes/temp_1748787231885_1748787232038_iQTLSNYl.pdf",
-    "id": "candidate-1748787232087",
-    "createdAt": "2025-06-01T14:13:52.087Z",
-    "updatedAt": "2025-06-01T14:15:55.669Z",
-    "screeningSummary": {
-      "callDuration": 0,
-      "evaluations": {
-        "experience": {
-          "score": "Average",
-          "notes": ""
-        },
-        "availability": {
-          "morningShift": false,
-          "eveningShift": false,
-          "weekendAvailable": false,
-          "transportation": false,
-          "notes": ""
-        },
-        "softSkills": {
-          "score": "Average",
-          "notes": ""
-        }
-      },
-      "roleSpecificAnswers": {
-        "Role-specific evaluation": ""
-      },
-      "overallSummary": "",
-      "recommendedNextSteps": "Review additional qualifications",
-      "completedAt": "2025-06-01T14:15:55.668Z",
-      "overallScore": 7.5,
-      "recommendation": "maybe",
-      "aiSummary": "{\"experience\":{\"evaluation\":\"\",\"highlights\":[]},\"availability\":{\"morning\":false,\"evening\":false,\"weekends\":false,\"notes\":\"\"},\"transportation\":{\"hasReliableTransportation\":false,\"notes\":\"\"},\"softSkills\":{\"evaluation\":\"\",\"highlights\":[]},\"roleSpecific\":{\"evaluation\":\"\",\"strengths\":[],\"areas_of_improvement\":[]}}",
-      "strengths": [],
-      "concerns": []
-    },
-    "screeningId": "screening_1748787235076"
+    "screeningId": "screening_1748899663005"
   }
 ]

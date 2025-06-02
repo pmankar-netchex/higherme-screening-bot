@@ -1,8 +1,20 @@
 /**
- * Client-side Vapi.ai configuration for restaurant recruitment platform screening calls
+ * Unified Vapi.ai configuration for restaurant recruitment platform screening calls
+ * Supports both client-side and server-side usage with dynamic config loading
  */
 
 import { ScreeningRole } from '../../types';
+
+// Server-side imports (only available in Node.js environment)
+let fs: any, path: any;
+try {
+  if (typeof window === 'undefined') {
+    fs = require('fs');
+    path = require('path');
+  }
+} catch (error) {
+  // Silently fail in browser environment
+}
 
 // Configuration for the Vapi.ai assistant
 export interface VapiConfig {
@@ -52,8 +64,154 @@ export const MANDATORY_QUESTIONS = [
   'Do you have reliable transportation to get to work?'
 ];
 
-// Generate role-specific questions based on the job role (client-side fallback)
+// Server-side function to get mandatory questions from config (when available)
+export function getMandatoryQuestions(): string[] {
+  // Return static questions if in browser or if fs/path not available
+  if (typeof window !== 'undefined' || !fs || !path) {
+    return MANDATORY_QUESTIONS;
+  }
+
+  try {
+    // Read from config.json (server-side only)
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      
+      // Check if mandatory questions exist in config
+      if (config.mandatoryQuestions && Array.isArray(config.mandatoryQuestions)) {
+        return config.mandatoryQuestions;
+      }
+    }
+  } catch (error) {
+    console.error('Error reading mandatory questions from config:', error);
+  }
+  
+  // Fallback to default questions
+  return MANDATORY_QUESTIONS;
+}
+
+// Server-side function to get conversation tone from config (when available)
+export function getConversationTone(): string {
+  // Return default tone if in browser or if fs/path not available
+  if (typeof window !== 'undefined' || !fs || !path) {
+    return DEFAULT_VAPI_CONFIG.conversationTone;
+  }
+
+  try {
+    // Read from config.json (server-side only)
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      
+      // Check if vapiSettings and conversationTone exist in config
+      if (config.vapiSettings && config.vapiSettings.conversationTone) {
+        return config.vapiSettings.conversationTone;
+      }
+    }
+  } catch (error) {
+    console.error('Error reading conversation tone from config:', error);
+  }
+  
+  // Fallback to default tone
+  return DEFAULT_VAPI_CONFIG.conversationTone;
+}
+
+// Server-side function to get custom system prompt from config (when available)
+export function getCustomSystemPrompt(): string | undefined {
+  // Return undefined if in browser or if fs/path not available
+  if (typeof window !== 'undefined' || !fs || !path) {
+    return undefined;
+  }
+
+  try {
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      if (config.vapiSettings && config.vapiSettings.customSystemPrompt) {
+        return config.vapiSettings.customSystemPrompt;
+      }
+    }
+  } catch (error) {
+    console.error('Error reading custom system prompt from config:', error);
+  }
+  return undefined;
+}
+
+// Server-side function to get custom analysis prompt from config (when available)
+export function getCustomAnalysisPrompt(): string | undefined {
+  // Return undefined if in browser or if fs/path not available
+  if (typeof window !== 'undefined' || !fs || !path) {
+    return undefined;
+  }
+
+  try {
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      if (config.vapiSettings && config.vapiSettings.customAnalysisPrompt) {
+        return config.vapiSettings.customAnalysisPrompt;
+      }
+    }
+  } catch (error) {
+    console.error('Error reading custom analysis prompt from config:', error);
+  }
+  return undefined;
+}
+
+// Server-side function to get Vapi settings from config (when available)
+export function getVapiSettings(): VapiConfig {
+  // Return default config if in browser or if fs/path not available
+  if (typeof window !== 'undefined' || !fs || !path) {
+    return DEFAULT_VAPI_CONFIG;
+  }
+
+  try {
+    // Read from config.json (server-side only)
+    const configPath = path.join(process.cwd(), 'data', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      
+      // Check if vapiSettings exist in config
+      if (config.vapiSettings) {
+        return {
+          voice: config.vapiSettings.voice || DEFAULT_VAPI_CONFIG.voice,
+          model: config.vapiSettings.model || DEFAULT_VAPI_CONFIG.model,
+          transcriber: config.vapiSettings.transcriber || DEFAULT_VAPI_CONFIG.transcriber,
+          conversationTone: config.vapiSettings.conversationTone || DEFAULT_VAPI_CONFIG.conversationTone,
+          maxCallDuration: config.vapiSettings.maxCallDuration || DEFAULT_VAPI_CONFIG.maxCallDuration,
+          customSystemPrompt: config.vapiSettings.customSystemPrompt,
+          customAnalysisPrompt: config.vapiSettings.customAnalysisPrompt
+        };
+      }
+    }
+  } catch (error) {
+    console.error('Error reading Vapi settings from config:', error);
+  }
+  
+  // Fallback to default config
+  return DEFAULT_VAPI_CONFIG;
+}
+
+// Generate role-specific questions based on the job role with server-side config support
 export function getRoleSpecificQuestions(roleType: ScreeningRole): string[] {
+  // Try to read from config first (server-side only)
+  if (typeof window === 'undefined' && fs && path) {
+    try {
+      const configPath = path.join(process.cwd(), 'data', 'config.json');
+      if (fs.existsSync(configPath)) {
+        const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        
+        // Check if role-specific questions exist in config
+        if (config.roleSpecificQuestions && config.roleSpecificQuestions[roleType]) {
+          return config.roleSpecificQuestions[roleType];
+        }
+      }
+    } catch (error) {
+      console.error('Error reading role-specific questions from config:', error);
+    }
+  }
+
+  // Fallback to default questions if config is not available or an error occurs
   switch (roleType) {
     case 'server':
       return [
@@ -143,22 +301,25 @@ export function createScreeningAssistantOptions(
   jobTitle: string,
   candidateName: string,
   roleType: ScreeningRole,
-  config: VapiConfig = DEFAULT_VAPI_CONFIG
+  config?: VapiConfig
 ) {
+  // Use server-side config if available and no config is explicitly provided
+  const effectiveConfig = config || (typeof window === 'undefined' ? getVapiSettings() : DEFAULT_VAPI_CONFIG);
+  
   const roleSpecificQuestions = getRoleSpecificQuestions(roleType);
   const systemPrompt = generateScreeningSystemPrompt(
     jobTitle,
     roleType,
     roleSpecificQuestions,
-    config.conversationTone,
-    config.customSystemPrompt
+    effectiveConfig.conversationTone,
+    effectiveConfig.customSystemPrompt
   );
 
   // Get analysis prompt - use custom if available, otherwise default
-  const analysisPrompt = config.customAnalysisPrompt || 
+  const analysisPrompt = effectiveConfig.customAnalysisPrompt || getCustomAnalysisPrompt() ||
     `Analyze this ${jobTitle} screening call and provide a structured summary including:
     1. Candidate's relevant experience
-    2. Availability (shifts, weekends, transportation)
+    2. Availability (shifts, weekends, transportation) - Only mention in summary what candidate is said yes to, e.g. if candidate not availble for evening shift don't mention it. If candidate is available for both shifts mention both shift names. Same logic for all fields.
     3. Key responses to role-specific questions
     4. Overall assessment of communication skills
     5. Any concerns or red flags
@@ -210,7 +371,7 @@ export function createScreeningAssistantOptions(
     },
     // Call ending configuration
     silenceTimeoutSeconds: 15, // End call after 15 seconds of silence
-    maxDurationSeconds: config.maxCallDuration, // Use configured max duration (default 180 seconds)
+    maxDurationSeconds: effectiveConfig.maxCallDuration, // Use configured max duration (default 180 seconds)
     endCallMessage: "Thank you for your time. We'll review your responses and get back to you soon. Have a great day!",
     endCallPhrases: [
       "goodbye",
