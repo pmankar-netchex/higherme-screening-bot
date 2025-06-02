@@ -13,7 +13,8 @@ interface ExtendedCandidate extends Candidate {
 // Data file path
 const CANDIDATES_FILE = path.join(process.cwd(), 'data', 'candidates.json');
 
-// Mock data for development
+// Mock data for development - COMMENTED OUT FOR PRODUCTION
+/*
 const mockCandidates: ExtendedCandidate[] = [
   {
     id: 'candidate-001',
@@ -71,6 +72,7 @@ const mockCandidates: ExtendedCandidate[] = [
     updatedAt: '2024-01-16T09:15:00Z'
   }
 ];
+*/
 
 // Helper function to ensure data directory exists
 function ensureDataDirectory() {
@@ -88,12 +90,13 @@ function readCandidatesFromFile(): ExtendedCandidate[] {
       const data = fs.readFileSync(CANDIDATES_FILE, 'utf8');
       return JSON.parse(data);
     }
-    // If file doesn't exist, create it with mock data
-    fs.writeFileSync(CANDIDATES_FILE, JSON.stringify(mockCandidates, null, 2));
-    return mockCandidates;
+    // If file doesn't exist, create it with empty array
+    const emptyCandidates: ExtendedCandidate[] = [];
+    fs.writeFileSync(CANDIDATES_FILE, JSON.stringify(emptyCandidates, null, 2));
+    return emptyCandidates;
   } catch (error) {
     console.error('Error reading candidates file:', error);
-    return mockCandidates;
+    return []; // Return empty array instead of mock data
   }
 }
 

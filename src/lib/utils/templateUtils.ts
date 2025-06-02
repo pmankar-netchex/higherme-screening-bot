@@ -20,23 +20,23 @@ export function populateTemplate(template: string, data: Record<string, string>)
  * @returns Sample data object for populating the template
  */
 export function getSampleDataForTemplate(templateKey: string): Record<string, string> {
-  // Common data across all templates
+  // Common data across all templates - using generic test data
   const commonData = {
-    candidateName: 'John Smith',
-    position: 'Head Chef'
+    candidateName: 'John Smith', // Sample name for preview
+    position: 'Head Chef' // Sample position for preview
   };
 
-  // Template-specific data
+  // Template-specific data for preview purposes
   switch (templateKey) {
     case 'screeningInvitation':
       return {
         ...commonData,
-        screeningLink: 'https://restaurant.example/screening/abc123'
+        screeningLink: 'https://restaurant.example/screening/abc123' // Sample link
       };
     case 'interviewInvitation':
       return {
         ...commonData,
-        interviewLink: 'https://restaurant.example/interview/abc123'
+        interviewLink: 'https://restaurant.example/interview/abc123' // Sample link
       };
     case 'offerLetter':
       return {
@@ -45,7 +45,7 @@ export function getSampleDataForTemplate(templateKey: string): Record<string, st
 Salary: $65,000 per year
 Start Date: January 15, 2023
 Location: Downtown Branch
-Schedule: Tuesday to Saturday, 2pm - 10pm`
+Schedule: Tuesday to Saturday, 2pm - 10pm` // Sample offer details
       };
     default:
       return commonData;

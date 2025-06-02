@@ -6,7 +6,8 @@ import type { Job } from '../types';
 // Data file path
 const JOBS_FILE = path.join(process.cwd(), 'data', 'jobs.json');
 
-// Mock data for development
+// Mock data for development - COMMENTED OUT FOR PRODUCTION
+/*
 const mockJobs: Job[] = [
   {
     id: 'job-001',
@@ -37,6 +38,7 @@ const mockJobs: Job[] = [
     updatedAt: '2024-01-12T10:30:00Z'
   }
 ];
+*/
 
 // Helper function to ensure data directory exists
 function ensureDataDirectory() {
@@ -54,12 +56,13 @@ function readJobsFromFile(): Job[] {
       const data = fs.readFileSync(JOBS_FILE, 'utf8');
       return JSON.parse(data);
     }
-    // If file doesn't exist, create it with mock data
-    fs.writeFileSync(JOBS_FILE, JSON.stringify(mockJobs, null, 2));
-    return mockJobs;
+    // If file doesn't exist, create it with empty array
+    const emptyJobs: Job[] = [];
+    fs.writeFileSync(JOBS_FILE, JSON.stringify(emptyJobs, null, 2));
+    return emptyJobs;
   } catch (error) {
     console.error('Error reading jobs file:', error);
-    return mockJobs;
+    return []; // Return empty array instead of mock data
   }
 }
 

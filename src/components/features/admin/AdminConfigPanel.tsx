@@ -36,7 +36,7 @@ interface SystemConfig {
   };
 }
 
-// Mock initial config - in real app, would fetch from API/backend
+// ESSENTIAL: Default configuration - DO NOT COMMENT OUT - Required for application initialization
 const defaultConfig: SystemConfig = {
   applicationSettings: {
     allowOpenApplications: true,
@@ -93,23 +93,23 @@ export default function AdminConfigPanel() {
   }, [searchParams]);
   
   // For demonstration, we'll load from backend API
+  const fetchConfig = async () => {
+    try {
+      const response = await fetch('/api/admin/config');
+      if (!response.ok) throw new Error('Failed to fetch config');
+      
+      const data = await response.json();
+      setConfig(data);
+      setOriginalConfig(data);
+    } catch (error) {
+      console.error('Error loading config:', error);
+      // Fallback to default config if API fails
+      setConfig(defaultConfig);
+      setOriginalConfig(defaultConfig);
+    }
+  };
+  
   useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch('/api/admin/config');
-        if (!response.ok) throw new Error('Failed to fetch config');
-        
-        const data = await response.json();
-        setConfig(data);
-        setOriginalConfig(data);
-      } catch (error) {
-        console.error('Error loading config:', error);
-        // Fallback to default config if API fails
-        setConfig(defaultConfig);
-        setOriginalConfig(defaultConfig);
-      }
-    };
-    
     fetchConfig();
   }, []);
   

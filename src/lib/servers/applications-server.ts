@@ -6,7 +6,8 @@ import type { Application, ApplicationStatus, ApplicationStep, ApplicationTimeli
 // Data file path
 const APPLICATIONS_FILE = path.join(process.cwd(), 'data', 'applications.json');
 
-// Mock data for development
+// Mock data for development - COMMENTED OUT FOR PRODUCTION
+/*
 const mockApplications: Application[] = [
   {
     id: 'app-001',
@@ -75,6 +76,7 @@ const mockApplications: Application[] = [
     updatedAt: '2024-01-16T10:30:00Z'
   }
 ];
+*/
 
 // Helper function to ensure data directory exists
 function ensureDataDirectory() {
@@ -92,12 +94,13 @@ function readApplicationsFromFile(): Application[] {
       const data = fs.readFileSync(APPLICATIONS_FILE, 'utf8');
       return JSON.parse(data);
     }
-    // If file doesn't exist, create it with mock data
-    fs.writeFileSync(APPLICATIONS_FILE, JSON.stringify(mockApplications, null, 2));
-    return mockApplications;
+    // If file doesn't exist, create it with empty array
+    const emptyApplications: Application[] = [];
+    fs.writeFileSync(APPLICATIONS_FILE, JSON.stringify(emptyApplications, null, 2));
+    return emptyApplications;
   } catch (error) {
     console.error('Error reading applications file:', error);
-    return mockApplications;
+    return []; // Return empty array instead of mock data
   }
 }
 
